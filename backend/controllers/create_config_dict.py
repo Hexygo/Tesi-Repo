@@ -6,10 +6,200 @@ from flask import Flask, request
 import zipfile  # per gestire lo zip inviato nella strategia hierarchy
 import json
 
+def splitting_config(experiment, request, context):
+    experiment['splitting'][context+'_splitting'] = dict()
+    count = 0
+    if request.form.get(context+'_fixed_timestamp', type=json.loads):
+        experiment['splitting'][context+'_splitting']['strategy'] = 'fixed_timestamp'
+        count+=1
+        if request.form.get(context+'_fixed_timestamp_value') == 'best':
+            experiment['splitting'][context+'_splitting']['timestamp'] = 'best'
+        else:
+            experiment['splitting'][context+'_splitting']['timestamp'] = int(request.form.get(
+                    context+'_fixed_timestamp_value',
+                    type=json.loads))
+    if request.form.get(context+'_temporal_hold_out', type=json.loads):
+        experiment['splitting'][context+'_splitting']['strategy'] = 'temporal_hold_out'
+        count+=1
+        if count > 1:
+            raise('Multiple '+context+' Splitting Strategies Chosen')
+        if request.form.get(context+'_temporal_hold_out_'+context+'_ratio'):
+            experiment['splitting'][context+'_splitting'][context+'_ratio'] = float(request.form.get(context+'_temporal_hold_out'+context+'_ratio'))
+        else:
+            experiment['splitting'][context+'_splitting']['leave_n_out'] = int(request.form.get(context+'_temporal_hold_out'+context+'_leave_n_out'))
+    if request.form.get(context+'_random_subsampling', type=json.loads):
+        experiment['splitting'][context+'_splitting']['strategy'] = 'random_subsampling'
+        count+=1
+        if count > 1:
+            raise('Multiple '+context+' Splitting Strategies Chosen')
+        if request.form.get(context+'_random_subsampling_'+context+'_ratio', type=json.loads):
+            experiment['splitting'][context+'_splitting'][context+'_ratio'] = float(request.form.get(
+                    context+'_random_subsampling_'+context+'_ratio'))
+        else:
+            experiment['splitting'][context+'_splitting']['leave_n_out'] = int(request.form.get(
+                    context+'_random_subsampling_leave_n_out'))
+        if request.form.get(context+'_random_subsampling_folds', type=json.loads):
+            experiment['splitting'][context+'_splitting']['folds'] = int(request.form.get(
+                    context+'_random_subsampling_folds'))
+    if request.form.get(context+'_random_cross_validation', type=json.loads):
+        experiment['splitting'][context+'_splitting']['strategy'] = 'random_cross_validation'
+        count+=1
+        if count > 1:
+            raise('Multiple '+context+' Splitting Strategies Chosen')
+        experiment['splitting'][context+'_splitting']['folds'] = int(request.form.get(
+                context+'_random_cross_validation_folds'))
+
+def dataset_config(experiment, request):
+    timestamp = datetime.now()
+    timestamp_string = timestamp.strftime("%d-%m-%Y-%H-%M-%S")
+    cript = hashlib.md5((timestamp_string + 'request/').encode('utf-8'))
+    _path = 'data/' + cript.hexdigest()
+    os.makedirs(_path, exist_ok=False)
+    dataset_path = _path + '/dataset.tsv'
+    request.files.get('file').save(dataset_path)  # dataset salvato in dataset path
+    experiment['data_config']['dataset_path'] = dataset_path
+
+    # Prefiltering
+    # Con questa ottimizzazione si passa da O(N) a O(1)
+    experiment['prefiltering'] = [] # Lista delle strategie di Prefiltering
+    if request.form.get('global_threshold', type=json.loads):
+        print('odio python')
+        experiment['prefiltering'].append(dict(
+            strategy = 'global_treshold',
+            threshold = int(request.form.get('global_treshold_treshold'))
+        ))
+    if request.form.get('user_average', type=json.loads):
+        experiment['prefiltering'].append(dict(
+            strategy = 'user_average'
+        ))
+    if request.form.get('user_k_core', type=json.loads):
+        experiment['prefiltering'].append(dict(
+            strategy = 'user_k_core',
+            core = int(request.form.get('user_k_core_core'))
+        ))
+    if request.form.get('item_k_core', type=json.loads):
+        experiment['prefiltering'].append(dict(
+            strategy = 'item_k_core',
+            core = int(request.form.get('item_k_core_core'))
+        ))
+    if request.form.get('iterative_k_core', type=json.loads):
+        experiment['prefiltering'].append(dict(
+            strategy = 'iterative_k_core',
+            core = int(request.form.get('iterative_k_core_core'))
+        ))
+    if request.form.get('n_rounds_k_core', type=json.loads):
+        experiment['prefiltering'].append(dict(
+            strategy = 'n_rounds_k_core',
+            core = int(request.form.get('n_rounds_k_core_core')),
+            rounds = int(request.form.get('n_rounds_k_core_rounds'))
+        ))
+    if request.form.get('cold_users', type=json.loads):
+        experiment['prefiltering'].append(dict(
+            strategy = 'cold_users',
+            threshold = int(request.form.get('cold_users_threshold'))
+        ))  
+    
+    experiment['splitting'] = dict()
+    # Test Splitting
+    splitting_config(experiment, request, 'test')
+
+    # Validation Splitting
+    splitting_config(experiment, request, 'validation')
+
+    experiment['dataset'] = request.files['file'].filename
+    # così ho preso il nome del dataset passato dall'utente (caso strategia dataset)
+    # vedi come funziona con hierarchy e fixed poi
+
+    # gestione salvataggio dati splittati (scegliamo lato backend di salvarli, non sceglie l'utente)
+    save_folder = 'splitted_data/' + cript.hexdigest()
+    experiment['splitting']['save_on_disk'] = True
+    experiment['splitting']['save_folder'] = save_folder
+    
+def fixed_config(experiment, request):
+    print('selected fixed strategy')
+    timestamp = datetime.now()
+    timestamp_string = timestamp.strftime("%d-%m-%Y-%H-%M-%S")
+    cript = hashlib.md5((timestamp_string + 'request/').encode('utf-8'))
+    _path = '../data/' + cript.hexdigest()
+    os.makedirs(_path, exist_ok=False)
+    train_path = _path + 'test_dataset.tsv'
+    test_path = _path + 'test_dataset.tsv'
+    request.files.get('file').save(train_path)
+    request.files.get('test_file').save(test_path)
+    experiment['data_config']['train_path'] = train_path
+    experiment['data_config']['test_path'] = test_path
+    if request.files.get('validation_file'):
+        validation_path = _path + 'validation_dataset.tsv'
+        request.files.get('validation_file').save(validation_path)
+        experiment['data_config']['validation_path'] = validation_path
+
+    experiment['dataset'] = request.files['file'].filename
+    # così ho preso il nome del dataset passato dall'utente (caso strategia dataset)
+    # vedi come funziona con hierarchy e fixed poi
+
+    # gestione salvataggio dati splittati (scegliamo lato backend di salvarli, non sceglie l'utente)
+    save_folder = 'splitted_data/' + cript.hexdigest()
+    experiment['splitting'] = dict()
+    experiment['splitting']['save_on_disk'] = True
+    experiment['splitting']['save_folder'] = save_folder
+    return
+
+def hierarchy_config(experiment, request):
+    timestamp = datetime.now()
+    timestamp_string = timestamp.strftime("%d-%m-%Y-%H-%M-%S")
+    cript = hashlib.md5((timestamp_string + 'request/').encode('utf-8'))
+    _path = '../data/' + cript.hexdigest()
+    os.makedirs(_path, exist_ok=False)
+
+    with zipfile.ZipFile(request.files['file'], 'r') as zip_ref:
+        zip_ref.extractall(_path)
+    experiment['data_config']['root_folder'] = _path
+
+    experiment['dataset'] = request.files['file'].filename
+    # così ho preso il nome del dataset passato dall'utente (caso strategia dataset)
+    # vedi come funziona con hierarchy e fixed poi
+
+    # gestione salvataggio dati splittati (scegliamo lato backend di salvarli, non sceglie l'utente)
+    save_folder = 'splitted_data/' + cript.hexdigest()
+    experiment['splitting']=dict()
+    experiment['splitting']['save_on_disk'] = True
+    experiment['splitting']['save_folder'] = save_folder
+    return
+
+
+def set_strategy(experiment, request):
+    experiment['data_config'] = dict()
+    experiment['data_config']['strategy'] = request.form.get('loading_strategy') # Strategia impostata, ora si passa alla fase di configurazione specifica della strategia scelta.
+
+    match experiment['data_config']['strategy']:
+        case 'dataset':
+            dataset_config(experiment, request)
+        case 'fixed':
+            fixed_config(experiment, request)
+        case 'hierarchy':
+            hierarchy_config(experiment, request)
+    
+    return
+
+def create_config_dict(request):
+    config = dict()
+    config['experiment'] = dict()
+    set_strategy(config['experiment'], request)
+
+    # selezione del seed random
+    if request.form.get('random_seed'):
+        config['experiment']['random_seed'] = int(request.form.get('random_seed'))
+    # gestione binarize
+    config['experiment']['binarize'] = bool(request.form.get('binarize', type=json.loads))
+    # valutare se inserire accelerazione GPU
+    return config
+
+
 # questa funzione viene utilizzata per creare un dizionario di configurazione a partire dall'oggetto richiesta proveniente dal client
 # TODO sistemare il bug con il fixed timestamp
 # TODO sistemare il bug nel temporal hold out
-def create_config_dict(request):
+# DEPRECATO
+""" def create_config_dict(request):
     config = dict()
     config['experiment'] = dict()
     config['experiment']['data_config'] = dict()
@@ -33,7 +223,6 @@ def create_config_dict(request):
 
         config['experiment']['splitting'] = dict()
         config['experiment']['splitting']['test_splitting'] = dict()
-        config['experiment']['splitting']['test_splitting']['strategy'] = request.form.get('test_splitting_strategy')
 
         # gestione prefiltering
         # prefiltering_strategies = dict() //non dovrebbe servire più, se dà errori rimetterlo
@@ -87,13 +276,9 @@ def create_config_dict(request):
                 d7['threshold'] = int(request.form.get('cold_users_threshold'))
                 config['experiment']['prefiltering'].append(d7)
 
-        # gestione test data splitting
-        config['experiment']['splitting'] = dict()
-        config['experiment']['splitting']['test_splitting'] = dict()
-
         test_splitting_strategy = [i for i in {'fixed_timestamp', 'temporal_hold_out', 'random_subsampling',
                                                'random_cross_validation'} if request.form.get('test_' + i, type=json.loads)]
-        assert len(test_splitting_strategy) == 1
+        assert len(test_splitting_strategy) == 1, 'Test Splitting Strategy should be 1'
         test_splitting_strategy = test_splitting_strategy[0]
 
         config['experiment']['splitting']['test_splitting']['strategy'] = test_splitting_strategy
@@ -216,3 +401,4 @@ def create_config_dict(request):
     config['experiment']['binarize'] = bool(request.form.get('binarize', type=json.loads))
     # valutare se inserire accelerazione GPU
     return config
+ """

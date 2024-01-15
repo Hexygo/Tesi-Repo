@@ -30,7 +30,7 @@ function Form(props) {
 
         loading_strategy: '',
 
-        //dataset- prefiltering
+        //dataset-prefiltering
         random_seed: '',
         binarize: false,
         global_threshold: false,

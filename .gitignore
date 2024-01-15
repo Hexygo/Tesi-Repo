@@ -152,4 +152,6 @@ cython_debug/
 .idea/
 
 # datasets
-data/
+backend/data/
+backend/splitted_data/
+backend/zipped_data/

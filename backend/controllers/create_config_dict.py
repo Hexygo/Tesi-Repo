@@ -1,7 +1,8 @@
 import os
 import shutil
 from datetime import datetime
-import hashlib  # se proprio dopo vogliamo farla con hash il nome del dataset
+import hashlib
+import uuid  # se proprio dopo vogliamo farla con hash il nome del dataset
 from flask import Flask, request
 import zipfile  # per gestire lo zip inviato nella strategia hierarchy
 import json
@@ -50,10 +51,8 @@ def splitting_config(experiment, request, context):
                 context+'_random_cross_validation_folds'))
 
 def dataset_config(experiment, request):
-    timestamp = datetime.now()
-    timestamp_string = timestamp.strftime("%d-%m-%Y-%H-%M-%S")
-    cript = hashlib.md5((timestamp_string + 'request/').encode('utf-8'))
-    _path = 'data/' + cript.hexdigest()
+    name = str(uuid.uuid4())
+    _path = 'data/' + name
     os.makedirs(_path, exist_ok=False)
     dataset_path = _path + '/dataset.tsv'
     request.files.get('file').save(dataset_path)  # dataset salvato in dataset path
@@ -111,17 +110,16 @@ def dataset_config(experiment, request):
     # vedi come funziona con hierarchy e fixed poi
 
     # gestione salvataggio dati splittati (scegliamo lato backend di salvarli, non sceglie l'utente)
-    save_folder = 'splitted_data/' + cript.hexdigest()
+    save_folder = 'splitted_data/' + name
     experiment['splitting']['save_on_disk'] = True
     experiment['splitting']['save_folder'] = save_folder
     
 def fixed_config(experiment, request):
     print('selected fixed strategy')
-    timestamp = datetime.now()
-    timestamp_string = timestamp.strftime("%d-%m-%Y-%H-%M-%S")
-    cript = hashlib.md5((timestamp_string + 'request/').encode('utf-8'))
-    _path = '../data/' + cript.hexdigest()
+    name = str(uuid.uuid4())
+    _path = '../data/' + name
     os.makedirs(_path, exist_ok=False)
+
     train_path = _path + 'test_dataset.tsv'
     test_path = _path + 'test_dataset.tsv'
     request.files.get('file').save(train_path)
@@ -138,17 +136,15 @@ def fixed_config(experiment, request):
     # vedi come funziona con hierarchy e fixed poi
 
     # gestione salvataggio dati splittati (scegliamo lato backend di salvarli, non sceglie l'utente)
-    save_folder = 'splitted_data/' + cript.hexdigest()
+    save_folder = 'splitted_data/' + name
     experiment['splitting'] = dict()
     experiment['splitting']['save_on_disk'] = True
     experiment['splitting']['save_folder'] = save_folder
     return
 
 def hierarchy_config(experiment, request):
-    timestamp = datetime.now()
-    timestamp_string = timestamp.strftime("%d-%m-%Y-%H-%M-%S")
-    cript = hashlib.md5((timestamp_string + 'request/').encode('utf-8'))
-    _path = '../data/' + cript.hexdigest()
+    name = str(uuid.uuid4())
+    _path = '../data/' + name
     os.makedirs(_path, exist_ok=False)
 
     with zipfile.ZipFile(request.files['file'], 'r') as zip_ref:
@@ -160,7 +156,7 @@ def hierarchy_config(experiment, request):
     # vedi come funziona con hierarchy e fixed poi
 
     # gestione salvataggio dati splittati (scegliamo lato backend di salvarli, non sceglie l'utente)
-    save_folder = 'splitted_data/' + cript.hexdigest()
+    save_folder = 'splitted_data/' + name
     experiment['splitting']=dict()
     experiment['splitting']['save_on_disk'] = True
     experiment['splitting']['save_folder'] = save_folder

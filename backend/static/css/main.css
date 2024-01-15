@@ -1,0 +1,22 @@
+/*.container {
+width: 70vw;
+margin:auto;
+}*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
+}
+input{
+margin-top: 5px;
+margin-bottom: 5px;
+}
+footer{
+text-align : center;
+    height: 60px;
+}
+.copyright{
+    padding-bottom:10px;
+}

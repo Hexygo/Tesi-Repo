@@ -1,0 +1,76 @@
+.bar_container{
+    margin-top:10px;
+    width: 100%;
+    height: 10px;
+    background-color: rgb(182, 182, 182);
+    border-radius: 4px;
+    align-items: center;
+    align-content: center;
+    box-shadow: 0 2px 4px rgb(30, 31, 34);
+}
+ #status{
+    height:10px;
+    border-radius: 4px;
+     background: linear-gradient(90deg, rgb(69, 164, 232), rgb(41, 123, 180));
+}
+
+.one{
+    width:100%;
+
+}
+.two{
+    width:50%;
+
+}
+
+.five{
+    width:20%;
+
+}
+@keyframes expand20to40 {
+    from { width: 20%;}
+    to { width: 40%;}
+}
+
+@keyframes expand40to60 {
+    from { width: 40%; }
+    to { width: 60%; }
+}
+
+@keyframes expand60to80 {
+    from { width: 60%; }
+    to { width: 80%; }
+}
+
+@keyframes expand80to100 {
+    from { width: 80%; }
+    to { width: 100%; }
+}
+
+@keyframes reduce40to20 {
+    from { width: 40%; }
+    to { width: 20%; }
+}
+
+@keyframes reduce60to40 {
+    from { width: 60%; }
+    to { width: 40%; }
+}
+
+@keyframes reduce80to60 {
+    from { width: 80%; }
+    to { width: 60%; }
+}
+
+@keyframes reduce100to80 {
+    from { width: 100%; }
+    to { width: 80%; }
+}
+@keyframes expand50to100 {
+    from { width: 50% }
+    to { width: 100% }
+}
+@keyframes reduce100to50 {
+    from { width: 100% }
+    to { width: 50% }
+}

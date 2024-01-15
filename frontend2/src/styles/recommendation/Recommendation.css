@@ -1,0 +1,113 @@
+.recFormContainer{
+    margin-top: 1%;
+    width: 100vw;
+    display:flex;
+    flex-direction: row;
+}
+body {
+    overflow: auto !important;
+}
+.addModel{
+    margin-top: 20px;
+    border-style:solid;
+    border-radius: 13px;
+    border-width: 4px;
+    border-color: rgb(41, 124, 181);
+    background-color: aliceblue;
+    font-size:15px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    color:rgb(60, 70, 75);
+    transition: all .5s;
+}
+.addModel:hover{
+    box-shadow: rgba(105, 165, 196, 0.5) 0 1px 30px;
+    transition-duration: .1s;
+    cursor:pointer;
+    background-color: rgb(41, 124, 181);
+    /* background-image: linear-gradient(92.88deg, #6cb2b6 9.16%, #4faab4 43.89%, #28a8b6 64.72%); */
+    color: white;
+}
+.TrainModels {
+    position: relative;
+    font-family: "Arial Black", Gadget, sans-serif;
+    padding: 0.6em 1.6em;
+    border: 4px double #08bc2e;
+    overflow: hidden;
+    background-color: #eef6fd;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .3s;
+    z-index: 1;
+    color: #08bc2e;
+    bottom: 5px;
+}
+
+.TrainModels::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #08bc2e;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+.TrainModels:hover::before {
+    width: 105%;
+}
+
+.TrainModels:hover {
+    cursor: pointer;
+    background: #08bc2e;
+    color: #fbfbfb;
+}
+.TrainModels:hover span{
+    color: #fbfbfb;
+}
+.TrainModels span{
+    color: #08bc2e;
+    padding: -50px;
+}
+.textR{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size:  0.9em;
+}
+.File{
+    display: none;  /* Nasconde l'input di tipo file */
+}
+
+/* Stile per l'etichetta che funge da input file */
+.File + label {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 12px 24px;
+    background-color: transparent;
+    color: #1e1f22;
+    border: solid 3px #1c1b22;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+
+/* Effetto hover per l'etichetta */
+.File + label:hover {
+    box-shadow: rgba(105, 165, 196, 0.5) 0 1px 30px;
+}
+
+.selected-filename {
+    display: inline-block;
+    margin-left: 15px;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+.File + label svg{
+    position: absolute;
+    top: 11px;
+    left: 1px;
+
+}

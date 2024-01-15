@@ -1,0 +1,221 @@
+.textEv{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size:  1.2em;
+}
+.startEV{
+    margin-top: 40px;
+    border-style:double;
+    border-radius: 15px;
+    border-width: 4px;
+    border-color: rgb(41, 124, 181);
+    background-color: aliceblue;
+    border-style: solid;
+    font-size:20px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    color:rgb(60, 70, 75);
+    transition: all .5s;
+}
+.startEV:hover{
+    box-shadow: rgba(105, 165, 196, 0.5) 0 1px 30px;
+    transition-duration: .1s;
+    cursor:pointer;
+    background-color: rgb(41, 124, 181);
+    /* background-image: linear-gradient(92.88deg, #6cb2b6 9.16%, #4faab4 43.89%, #28a8b6 64.72%); */
+    color: white;
+}
+.dtTextEv{
+    font-family: 'Montserrat', sans-serif;
+    text-align:center;
+    font-size: 1em ;
+}
+.File{
+    display: none;
+}
+
+
+.File + label {
+    margin-top: 6px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 12px 24px;
+    background-color: transparent;
+    color: #1e1f22;
+    border: solid 3px #1c1b22;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+
+
+.File + label:hover {
+    box-shadow: rgba(105, 165, 196, 0.5) 0 1px 30px;
+}
+
+.selected-filename {
+    display: inline-block;
+    margin-left: 15px;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+.File + label svg{
+    position: absolute;
+    top: 11px;
+    left: 1px;
+
+}
+.labelStyle {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+}
+
+
+@media (max-width: 599px) {
+    .labelStyle {
+        max-width: 230px;
+    }
+}
+
+@media (min-width: 960px) {
+    .labelStyle {
+        max-width: 350px;
+    }
+}
+
+
+
+.EvContainetr{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.bttContainer{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 100%;
+    gap: 50px;
+    display: flex;
+    justify-content:space-between;
+    align-content: center;
+}
+.previous {
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: rgb(41, 124, 181);
+    background-color: aliceblue;
+    border-style: solid;
+    font-size:15px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    color:rgb(60, 70, 75);
+    transition: all .5s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.previous:hover {
+    color: white;
+    background-color: #297cb5;
+    box-shadow: rgba(105, 165, 196, 0.5) 0 1px 30px;
+
+}
+
+.previous > svg {
+    width: 34px;
+
+    transition: transform .3s ease-in-out;
+}
+
+.previous:hover svg {
+    transform: translateX(-5px);
+}
+
+.previous:active {
+    transform: scale(0.95);
+}
+.next {
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: rgb(41, 124, 181);
+    background-color: aliceblue;
+    border-style: solid ;
+    font-size:15px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    color:rgb(60, 70, 75);
+    transition: all .5s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.next:hover {
+    color: white;
+    background-color: #297cb5;
+    box-shadow: rgba(105, 165, 196, 0.5) 0 1px 30px;
+
+}
+
+.next > svg {
+    width: 34px;
+    transition: transform .3s ease-in-out;
+}
+
+.next:hover svg {
+    border-width: 3px;
+    transform: translateX(5px);
+}
+
+.next:active {
+    transform: scale(0.95);
+}
+.reset {
+    position: absolute;
+    right: -8px;
+    top: 5px;
+
+
+}
+.reset svg {
+    display: inline;
+    color: #fd0000;
+
+}
+.reset:hover svg{
+    color: #c50000;
+}
+.btt_cutoffs svg {
+    color: #297cb5;
+}
+
+
+.TitContainer{
+    max-width: fit-content;
+}
+.AddCutoffs{
+    margin-top: 20px;
+    border-style:solid;
+    border-radius: 13px;
+    border-width: 4px;
+    border-color: rgb(33, 206, 40);
+    background-color: aliceblue;
+    font-size:15px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    color:rgb(60, 70, 75);
+    transition: all .5s;
+}
+.AddCutoffs:hover{
+    box-shadow: rgba(105, 165, 196, 0.5) 0 1px 30px;
+    transition-duration: .1s;
+    cursor:pointer;
+    background-color: rgb(33, 204, 40);
+    color: white;
+}
+
+

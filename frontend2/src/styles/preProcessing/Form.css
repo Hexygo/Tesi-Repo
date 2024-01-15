@@ -1,0 +1,201 @@
+
+.start {
+    margin-top: 40px;
+    border-radius: 15px;
+    border-width: 4px;
+    border-color: rgb(41, 124, 181);
+    background-color: aliceblue;
+    border-style: solid;
+    font-size: 20px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    color: rgb(60, 70, 75);
+    transition: all .5s;
+}
+
+.start:hover {
+    box-shadow: rgba(105, 165, 196, 0.5) 0 1px 30px;
+    transition-duration: .1s;
+    cursor: pointer;
+    background-color: rgb(41, 124, 181);
+    /* background-image: linear-gradient(92.88deg, #6cb2b6 9.16%, #4faab4 43.89%, #28a8b6 64.72%); */
+    color: white;
+}
+
+.text {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+}
+
+#form_data {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+
+}
+
+.ButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+}
+
+.runData {
+    font-family: "Arial Black", Gadget, sans-serif;
+    padding: 0.8em 1.8em;
+    border: 4px double #08bc2e;
+    position: relative;
+    overflow: hidden;
+    background-color: #eef6fd;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .3s;
+    z-index: 1;
+    color: #08bc2e;
+}
+
+.runData::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #08bc2e;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+.runData:hover::before {
+    width: 105%;
+}
+
+.runData:hover {
+    cursor: pointer;
+    background: #08bc2e;
+    color: #fbfbfb;
+}
+
+.runData:hover span {
+    color: #fbfbfb;
+}
+
+.runData span {
+    color: #08bc2e;
+    padding: -50px;
+}
+
+.bttContainer {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    width: 100%;
+    gap: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+
+.next {
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: rgb(41, 124, 181);
+    background-color: aliceblue;
+    border-style: solid;
+    font-size: 15px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    color: rgb(60, 70, 75);
+    transition: all .5s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.next:hover {
+    color: white;
+    background-color: #297cb5;
+    box-shadow: rgba(105, 165, 196, 0.5) 0 1px 30px;
+
+}
+
+.next > svg {
+    width: 34px;
+    transition: transform .3s ease-in-out;
+}
+
+.next:hover svg {
+    border-width: 3px;
+    transform: translateX(5px);
+}
+
+.next:active {
+    transform: scale(0.95);
+}
+
+
+.reset {
+    position: absolute;
+    right: -8px;
+    top: 5px;
+
+
+}
+
+.reset svg {
+    display: inline;
+    color: #fd0000;
+
+}
+
+.reset:hover svg {
+    color: #c50000;
+}
+
+.previous {
+    border-radius: 10px;
+    border-width: 2px;
+    border-color: rgb(41, 124, 181);
+    background-color: aliceblue;
+    border-style: solid;
+    font-size: 15px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    color: rgb(60, 70, 75);
+    transition: all .5s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.previous:hover {
+    color: white;
+    background-color: #297cb5;
+    box-shadow: rgba(105, 165, 196, 0.5) 0 1px 30px;
+
+}
+
+.previous > svg {
+    width: 34px;
+
+    transition: transform .3s ease-in-out;
+}
+
+.previous:hover svg {
+    transform: translateX(-5px);
+}
+
+.previous:active {
+    transform: scale(0.95);
+}
+
+
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked, .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+    color: #297db6;
+}

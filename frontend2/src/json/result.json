@@ -1,0 +1,2167 @@
+[
+    {
+        "id": "Adversarial Learning",
+        "models": [
+            {
+                "id": "AMF",
+                "name": "AMF",
+                "description": "Adversarial Matrix Factorization",
+                "parameters": [
+                    {
+                        "name": "eval_perturbations",
+                        "default": "True"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "200"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "eps",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "l_adv",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "adversarial_epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "nb_iter",
+                        "default": "20"
+                    },
+                    {
+                        "name": "eps_iter",
+                        "default": "0.00001"
+                    }
+                ],
+                "url": "recommenders/adversarial.html#elliot.recommender.adversarial.AMF.AMF.AMF"
+            },
+            {
+                "id": "AMR",
+                "name": "AMR",
+                "description": "Adversarial Multimedia Recommender",
+                "parameters": [
+                    {
+                        "name": "eval_perturbations",
+                        "default": "True"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "200"
+                    },
+                    {
+                        "name": "factors_d",
+                        "default": "20"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_e",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "eps",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "l_adv",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "adversarial_epochs",
+                        "default": "5"
+                    },
+                    {
+                        "name": "eps_iter",
+                        "default": "0.00001"
+                    },
+                    {
+                        "name": "nb_iter",
+                        "default": "20"
+                    },
+                    {
+                        "name": "nb_iter",
+                        "default": "20"
+                    },
+                    {
+                        "name": "eps_iter",
+                        "default": "0.00001"
+                    }
+                ],
+                "url": "recommenders/adversarial.html#elliot.recommender.adversarial.AMR.AMR.AMR"
+            }
+        ]
+    },
+    {
+        "id": "Algebric",
+        "models": [
+            {
+                "id": "SlopeOne",
+                "name": "SlopeOne",
+                "description": "Slope One Predictors for Online Rating-Based Collaborative Filtering",
+                "parameters": [],
+                "url": "recommenders/algebric.html#elliot.recommender.algebric.slope_one.slope_one.SlopeOne"
+            }
+        ]
+    },
+    {
+        "id": "Autoencoders",
+        "models": [
+            {
+                "id": "MultiDAE",
+                "name": "MultiDAE",
+                "description": "Collaborative denoising autoencoder",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "intermediate_dim",
+                        "default": "600"
+                    },
+                    {
+                        "name": "latent_dim",
+                        "default": "200"
+                    },
+                    {
+                        "name": "reg_lambda",
+                        "default": "0.01"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "dropout_pkeep",
+                        "default": "1"
+                    }
+                ],
+                "url": "recommenders/autoencoders.html#elliot.recommender.autoencoders.dae.multi_dae.MultiDAE"
+            },
+            {
+                "id": "MultiVAE",
+                "name": "MultiVAE",
+                "description": "Variational Autoencoders for Collaborative Filtering",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "intermediate_dim",
+                        "default": "600"
+                    },
+                    {
+                        "name": "latent_dim",
+                        "default": "200"
+                    },
+                    {
+                        "name": "reg_lambda",
+                        "default": "0.01"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "dropout_pkeep",
+                        "default": "1"
+                    }
+                ],
+                "url": "recommenders/autoencoders.html#elliot.recommender.autoencoders.vae.multi_vae.MultiVAE"
+            }
+        ]
+    },
+    {
+        "id": "Content-Based",
+        "models": [
+            {
+                "id": "VSM",
+                "name": "VSM",
+                "description": "Vector Space Model",
+                "parameters": [
+                    {
+                        "name": "similarity",
+                        "default": "cosine"
+                    },
+                    {
+                        "name": "user_profile",
+                        "default": "binary"
+                    },
+                    {
+                        "name": "item_profile",
+                        "default": "binary"
+                    }
+                ],
+                "url": "recommenders/content_based.html#elliot.recommender.content_based.VSM.vector_space_model.VSM"
+            }
+        ]
+    },
+    {
+        "id": "Generative Adversarial Networks (GANs)",
+        "models": [
+            {
+                "id": "IRGAN",
+                "name": "IRGAN",
+                "description": "IRGAN: A Minimax Game for Unifying Generative and Discriminative Information Retrieval Models",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_gan",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "predict_model",
+                        "default": "generator"
+                    },
+                    {
+                        "name": "g_epochs",
+                        "default": "5"
+                    },
+                    {
+                        "name": "d_epochs",
+                        "default": "1"
+                    },
+                    {
+                        "name": "g_pretrain_epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "d_pretrain_epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "sample_lambda",
+                        "default": "0.2"
+                    }
+                ],
+                "url": "recommenders/gan.html#elliot.recommender.gan.IRGAN.irgan.IRGAN"
+            },
+            {
+                "id": "CFGAN",
+                "name": "CFGAN",
+                "description": "CFGAN: A Generic Collaborative Filtering Framework based on Generative Adversarial Networks",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_gan",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "g_epochs",
+                        "default": "5"
+                    },
+                    {
+                        "name": "d_epochs",
+                        "default": "1"
+                    },
+                    {
+                        "name": "s_zr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "s_pm",
+                        "default": "0.001"
+                    }
+                ],
+                "url": "recommenders/gan.html#elliot.recommender.gan.CFGAN.cfgan.CFGAN"
+            }
+        ]
+    },
+    {
+        "id": "Graph-based",
+        "models": [
+            {
+                "id": "LightGCN",
+                "name": "LightGCN",
+                "description": "LightGCN: Simplifying and Powering Graph Convolution Network for Recommendation",
+                "parameters": [
+                    {
+                        "name": "lr",
+                        "default": "0.0005"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "50"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "64"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "256"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "n_layers",
+                        "default": "1"
+                    },
+                    {
+                        "name": "n_fold",
+                        "default": "5"
+                    }
+                ],
+                "url": "recommenders/graph_based.html#elliot.recommender.graph_based.lightgcn.LightGCN.LightGCN"
+            },
+            {
+                "id": "NGCF",
+                "name": "NGCF",
+                "description": "Neural Graph Collaborative Filtering",
+                "parameters": [
+                    {
+                        "name": "lr",
+                        "default": "0.0005"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "50"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "64"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "256"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "weight_size",
+                        "default": "(64,)"
+                    },
+                    {
+                        "name": "node_dropout",
+                        "default": "()"
+                    },
+                    {
+                        "name": "message_dropout",
+                        "default": "(0.1,)"
+                    },
+                    {
+                        "name": "n_fold",
+                        "default": "5"
+                    }
+                ],
+                "url": "recommenders/graph_based.html#elliot.recommender.graph_based.ngcf.NGCF.NGCF"
+            }
+        ]
+    },
+    {
+        "id": "Knowledge-aware",
+        "models": [
+            {
+                "id": "KaHFM",
+                "name": "KaHFM",
+                "description": "Knowledge-aware Hybrid Factorization Machines",
+                "parameters": [
+                    {
+                        "name": "hyper_max_evals",
+                        "default": "20"
+                    },
+                    {
+                        "name": "hyper_opt_alg",
+                        "default": "tpe"
+                    },
+                    {
+                        "name": "validation_rate",
+                        "default": "1"
+                    },
+                    {
+                        "name": "verbose",
+                        "default": "True"
+                    },
+                    {
+                        "name": "save_weights",
+                        "default": "True"
+                    },
+                    {
+                        "name": "validation_metric",
+                        "default": "nDCG@10"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "100"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "-1"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.05"
+                    },
+                    {
+                        "name": "bias_regularization",
+                        "default": "0"
+                    },
+                    {
+                        "name": "user_regularization",
+                        "default": "0.0025"
+                    },
+                    {
+                        "name": "positive_item_regularization",
+                        "default": "0.0025"
+                    },
+                    {
+                        "name": "negative_item_regularization",
+                        "default": "0.00025"
+                    },
+                    {
+                        "name": "update_negative_item_factors",
+                        "default": "True"
+                    },
+                    {
+                        "name": "update_users",
+                        "default": "True"
+                    },
+                    {
+                        "name": "update_items",
+                        "default": "True"
+                    },
+                    {
+                        "name": "update_bias",
+                        "default": "True"
+                    },
+                    {
+                        "name": "hyper_max_evals",
+                        "default": "20"
+                    },
+                    {
+                        "name": "hyper_opt_alg",
+                        "default": "tpe"
+                    },
+                    {
+                        "name": "validation_rate",
+                        "default": "1"
+                    },
+                    {
+                        "name": "verbose",
+                        "default": "True"
+                    },
+                    {
+                        "name": "save_weights",
+                        "default": "True"
+                    },
+                    {
+                        "name": "validation_metric",
+                        "default": "nDCG@10"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "100"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "-1"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.005"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0"
+                    },
+                    {
+                        "name": "hyper_max_evals",
+                        "default": "20"
+                    },
+                    {
+                        "name": "hyper_opt_alg",
+                        "default": "tpe"
+                    },
+                    {
+                        "name": "validation_rate",
+                        "default": "1"
+                    },
+                    {
+                        "name": "verbose",
+                        "default": "True"
+                    },
+                    {
+                        "name": "save_weights",
+                        "default": "True"
+                    },
+                    {
+                        "name": "validation_metric",
+                        "default": "nDCG@10"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "100"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "-1"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.005"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0"
+                    }
+                ],
+                "url": "recommenders/knowledge_aware.html#elliot.recommender.knowledge_aware.kaHFM.kahfm.KaHFM"
+            },
+            {
+                "id": "KaHFMBatch",
+                "name": "KaHFMBatch",
+                "description": "Knowledge-aware Hybrid Factorization Machines (Tensorflow Batch Variant)",
+                "parameters": [
+                    {
+                        "name": "hyper_max_evals",
+                        "default": "20"
+                    },
+                    {
+                        "name": "hyper_opt_alg",
+                        "default": "tpe"
+                    },
+                    {
+                        "name": "validation_rate",
+                        "default": "1"
+                    },
+                    {
+                        "name": "verbose",
+                        "default": "True"
+                    },
+                    {
+                        "name": "save_weights",
+                        "default": "True"
+                    },
+                    {
+                        "name": "validation_metric",
+                        "default": "nDCG@10"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "100"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "-1"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.005"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0"
+                    }
+                ],
+                "url": "recommenders/knowledge_aware.html#elliot.recommender.knowledge_aware.kaHFM_batch.kahfm_batch.KaHFMBatch"
+            },
+            {
+                "id": "KaHFMEmbeddings",
+                "name": "KaHFMEmbeddings",
+                "description": "Knowledge-aware Hybrid Factorization Machines (Tensorflow Embedding-based Variant)",
+                "parameters": [
+                    {
+                        "name": "hyper_max_evals",
+                        "default": "20"
+                    },
+                    {
+                        "name": "hyper_opt_alg",
+                        "default": "tpe"
+                    },
+                    {
+                        "name": "validation_rate",
+                        "default": "1"
+                    },
+                    {
+                        "name": "verbose",
+                        "default": "True"
+                    },
+                    {
+                        "name": "save_weights",
+                        "default": "True"
+                    },
+                    {
+                        "name": "validation_metric",
+                        "default": "nDCG@10"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "100"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "-1"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.005"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0"
+                    }
+                ],
+                "url": "recommenders/knowledge_aware.html#elliot.recommender.knowledge_aware.kahfm_embeddings.kahfm_embeddings.KaHFMEmbeddings"
+            }
+        ]
+    },
+    {
+        "id": "Latent Factor Models",
+        "models": [
+            {
+                "id": "BPRMF",
+                "name": "BPRMF",
+                "description": "Bayesian Personalized Ranking with Matrix Factorization",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "bias_regularization",
+                        "default": "0"
+                    },
+                    {
+                        "name": "user_regularization",
+                        "default": "0.0025"
+                    },
+                    {
+                        "name": "positive_item_regularization",
+                        "default": "0.0025"
+                    },
+                    {
+                        "name": "negative_item_regularization",
+                        "default": "0.0025"
+                    },
+                    {
+                        "name": "update_negative_item_factors",
+                        "default": "True"
+                    },
+                    {
+                        "name": "update_users",
+                        "default": "True"
+                    },
+                    {
+                        "name": "update_items",
+                        "default": "True"
+                    },
+                    {
+                        "name": "update_bias",
+                        "default": "True"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.001"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.BPRMF.BPRMF.BPRMF"
+            },
+            {
+                "id": "BPRMF_batch",
+                "name": "BPRMF_batch",
+                "description": "Batch Bayesian Personalized Ranking with Matrix Factorization",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.001"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.BPRMF_batch.BPRMF_batch.BPRMF_batch"
+            },
+            {
+                "id": "BPRSlim",
+                "name": "BPRSlim",
+                "description": "BPR Sparse Linear Methods",
+                "parameters": [],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.BPRSlim.bprslim.BPRSlim"
+            },
+            {
+                "id": "CML",
+                "name": "CML",
+                "description": "Collaborative Metric Learning",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "margin",
+                        "default": "0.5"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.CML.CML.CML"
+            },
+            {
+                "id": "FFM",
+                "name": "FFM",
+                "description": "Field-aware Factorization Machines",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "reg",
+                        "default": "0.1"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.FFM.field_aware_factorization_machine.FFM"
+            },
+            {
+                "id": "FISM",
+                "name": "FISM",
+                "description": "FISM: Factored Item Similarity Models",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "alpha",
+                        "default": "0.5"
+                    },
+                    {
+                        "name": "beta",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "lambda",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "gamma",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "neg_ratio",
+                        "default": "0.5"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.FISM.FISM.FISM"
+            },
+            {
+                "id": "FM",
+                "name": "FM",
+                "description": "Factorization Machines",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "reg",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "reg",
+                        "default": "0.1"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.FM.factorization_machine.FM"
+            },
+            {
+                "id": "FunkSVD",
+                "name": "FunkSVD",
+                "description": "For further details, please refer to the paper",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "reg_w",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "reg_b",
+                        "default": "0.001"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.FunkSVD.funk_svd.FunkSVD"
+            },
+            {
+                "id": "LogisticMatrixFactorization",
+                "name": "LogisticMatrixFactorization",
+                "description": "Logistic Matrix Factorization",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "reg",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "alpha",
+                        "default": "0.5"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.LogisticMF.logistic_matrix_factorization.LogisticMatrixFactorization"
+            },
+            {
+                "id": "MF",
+                "name": "MF",
+                "description": "Matrix Factorization",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "reg",
+                        "default": "0.1"
+                    }
+                ],
+                "url": "../elliot/elliot.recommender.latent_factor_models.MF.html#elliot.recommender.latent_factor_models.MF.matrix_factorization.MF"
+            },
+            {
+                "id": "NonNegMF",
+                "name": "NonNegMF",
+                "description": "Non-Negative Matrix Factorization",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "reg",
+                        "default": "0.1"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.NonNegMF.non_negative_matrix_factorization.NonNegMF"
+            },
+            {
+                "id": "PMF",
+                "name": "PMF",
+                "description": "Probabilistic Matrix Factorization",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "50"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "reg",
+                        "default": "0.0025"
+                    },
+                    {
+                        "name": "gaussian_variance",
+                        "default": "0.1"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.PMF.probabilistic_matrix_factorization.PMF"
+            },
+            {
+                "id": "PureSVD",
+                "name": "PureSVD",
+                "description": "For further details, please refer to the paper",
+                "parameters": [
+                    {
+                        "name": "factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "seed",
+                        "default": "42"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.PureSVD.pure_svd.PureSVD"
+            },
+            {
+                "id": "Slim",
+                "name": "Slim",
+                "description": "Train a Sparse Linear Methods (SLIM) item similarity model.",
+                "parameters": [
+                    {
+                        "name": "l1_ratio",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "alpha",
+                        "default": "0.001"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.Slim.slim.Slim"
+            },
+            {
+                "id": "SVDpp",
+                "name": "SVDpp",
+                "description": "SVD++",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "50"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "reg_w",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "reg_b",
+                        "default": "0.001"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.SVDpp.svdpp.SVDpp"
+            },
+            {
+                "id": "WRMF",
+                "name": "WRMF",
+                "description": "Weighted XXX Matrix Factorization",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "50"
+                    },
+                    {
+                        "name": "alpha",
+                        "default": "1"
+                    },
+                    {
+                        "name": "reg",
+                        "default": "0.1"
+                    }
+                ],
+                "url": "recommenders/latent_factor_models.html#elliot.recommender.latent_factor_models.WRMF.wrmf.WRMF"
+            }
+        ]
+    },
+    {
+        "id": "Artificial Neural Networks",
+        "models": [
+            {
+                "id": "ConvMF",
+                "name": "ConvMF",
+                "description": "Convolutional Matrix Factorization for Document Context-Aware Recommendation",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "embedding_size",
+                        "default": "100"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.005"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.0005"
+                    },
+                    {
+                        "name": "cnn_channels",
+                        "default": "(1, 32, 32)"
+                    },
+                    {
+                        "name": "cnn_kernels",
+                        "default": "(2,2)"
+                    },
+                    {
+                        "name": "cnn_strides",
+                        "default": "(2,2)"
+                    },
+                    {
+                        "name": "dropout_prob",
+                        "default": "0"
+                    }
+                ],
+                "url": "recommenders/neural.html#elliot.recommender.neural.ConvMF.convolutional_matrix_factorization.ConvMF"
+            },
+            {
+                "id": "ConvNeuMF",
+                "name": "ConvNeuMF",
+                "description": "Outer Product-based Neural Collaborative Filtering",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "embedding_size",
+                        "default": "100"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.005"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.0005"
+                    },
+                    {
+                        "name": "cnn_channels",
+                        "default": "(1, 32, 32)"
+                    },
+                    {
+                        "name": "cnn_kernels",
+                        "default": "(2,2)"
+                    },
+                    {
+                        "name": "cnn_strides",
+                        "default": "(2,2)"
+                    },
+                    {
+                        "name": "dropout_prob",
+                        "default": "0"
+                    }
+                ],
+                "url": "recommenders/neural.html#elliot.recommender.neural.ConvNeuMF.convolutional_neural_matrix_factorization.ConvNeuMF"
+            },
+            {
+                "id": "DeepFM",
+                "name": "DeepFM",
+                "description": "DeepFM: A Factorization-Machine based Neural Network for CTR Prediction",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "100"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "hidden_neurons",
+                        "default": "(64,32)"
+                    },
+                    {
+                        "name": "hidden_activations",
+                        "default": "('relu','relu')"
+                    }
+                ],
+                "url": "recommenders/neural.html#elliot.recommender.neural.DeepFM.deep_fm.DeepFM"
+            },
+            {
+                "id": "DMF",
+                "name": "DMF",
+                "description": "Deep Matrix Factorization Models for Recommender Systems.",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "reg",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "user_mlp",
+                        "default": "(64,32)"
+                    },
+                    {
+                        "name": "item_mlp",
+                        "default": "(64,32)"
+                    },
+                    {
+                        "name": "similarity",
+                        "default": "cosine"
+                    }
+                ],
+                "url": "recommenders/neural.html#elliot.recommender.neural.DMF.deep_matrix_factorization.DMF"
+            },
+            {
+                "id": "GMF",
+                "name": "GMF",
+                "description": "Neural Collaborative Filtering",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "mf_factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "is_edge_weight_train",
+                        "default": "True"
+                    }
+                ],
+                "url": "recommenders/neural.html#elliot.recommender.neural.GeneralizedMF.generalized_matrix_factorization.GMF"
+            },
+            {
+                "id": "ItemAutoRec",
+                "name": "ItemAutoRec",
+                "description": "AutoRec: Autoencoders Meet Collaborative Filtering (Item-based)",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "hidden_neuron",
+                        "default": "500"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.001"
+                    }
+                ],
+                "url": "recommenders/neural.html#elliot.recommender.neural.ItemAutoRec.itemautorec.ItemAutoRec"
+            },
+            {
+                "id": "NAIS",
+                "name": "NAIS",
+                "description": "NAIS: Neural Attentive Item Similarity Model for Recommendation",
+                "parameters": [
+                    {
+                        "name": "factors",
+                        "default": "100"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "algorithm",
+                        "default": "concat"
+                    },
+                    {
+                        "name": "weight_size",
+                        "default": "32"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "alpha",
+                        "default": "0.5"
+                    },
+                    {
+                        "name": "beta",
+                        "default": "0.5"
+                    },
+                    {
+                        "name": "neg_ratio",
+                        "default": "0.5"
+                    }
+                ],
+                "url": "recommenders/neural.html#elliot.recommender.neural.NAIS.nais.NAIS"
+            },
+            {
+                "id": "NeuMF",
+                "name": "NeuMF",
+                "description": "Neural Collaborative Filtering",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "embedding_size",
+                        "default": "100"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.005"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.0005"
+                    },
+                    {
+                        "name": "cnn_channels",
+                        "default": "(1, 32, 32)"
+                    },
+                    {
+                        "name": "cnn_kernels",
+                        "default": "(2,2)"
+                    },
+                    {
+                        "name": "cnn_strides",
+                        "default": "(2,2)"
+                    },
+                    {
+                        "name": "dropout_prob",
+                        "default": "0"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "mf_factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "mlp_factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "mlp_hidden_size",
+                        "default": "(64,32)"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "dropout",
+                        "default": "0.0"
+                    },
+                    {
+                        "name": "is_mf_train",
+                        "default": "True"
+                    },
+                    {
+                        "name": "is_mlp_train",
+                        "default": "True"
+                    }
+                ],
+                "url": "recommenders/neural.html#elliot.recommender.neural.NeuMF.neural_matrix_factorization.NeuMF"
+            },
+            {
+                "id": "NFM",
+                "name": "NFM",
+                "description": "Neural Factorization Machines for Sparse Predictive Analytics",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "100"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "hidden_neurons",
+                        "default": "(64,32)"
+                    },
+                    {
+                        "name": "hidden_activations",
+                        "default": "('relu','relu')"
+                    }
+                ],
+                "url": "recommenders/neural.html#elliot.recommender.neural.NFM.neural_fm.NFM"
+            },
+            {
+                "id": "NPR",
+                "name": "NPR",
+                "description": "Neural Personalized Ranking for Image Recommendation (Model without visual features)",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "mf_factors",
+                        "default": "100"
+                    },
+                    {
+                        "name": "mlp_hidden_size",
+                        "default": "(64,32)"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "dropout",
+                        "default": "0.45"
+                    }
+                ],
+                "url": "recommenders/neural.html#elliot.recommender.neural.NPR.neural_personalized_ranking.NPR"
+            },
+            {
+                "id": "UserAutoRec",
+                "name": "UserAutoRec",
+                "description": "AutoRec: Autoencoders Meet Collaborative Filtering (User-based)",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "hidden_neuron",
+                        "default": "500"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.001"
+                    }
+                ],
+                "url": "recommenders/neural.html#elliot.recommender.neural.UserAutoRec.userautorec.UserAutoRec"
+            },
+            {
+                "id": "WideAndDeep",
+                "name": "WideAndDeep",
+                "description": "Wide & Deep Learning for Recommender Systems",
+                "parameters": [
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "50"
+                    },
+                    {
+                        "name": "mlp_hidden_size",
+                        "default": "(32, 32, 1)"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.005"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.0005"
+                    },
+                    {
+                        "name": "dropout_prob",
+                        "default": "0.0"
+                    }
+                ],
+                "url": "recommenders/neural.html#elliot.recommender.neural.WideAndDeep.wide_and_deep.WideAndDeep"
+            }
+        ]
+    },
+    {
+        "id": "Neighborhood-based Models",
+        "models": [
+            {
+                "id": "ItemKNN",
+                "name": "ItemKNN",
+                "description": "Amazon.com recommendations: item-to-item collaborative filtering",
+                "parameters": [
+                    {
+                        "name": "neighbors",
+                        "default": "40"
+                    },
+                    {
+                        "name": "similarity",
+                        "default": "cosine"
+                    },
+                    {
+                        "name": "implementation",
+                        "default": "aiolli"
+                    },
+                    {
+                        "name": "neighbors",
+                        "default": "40"
+                    },
+                    {
+                        "name": "similarity",
+                        "default": "cosine"
+                    }
+                ],
+                "url": "recommenders/knn.html#elliot.recommender.knn.item_knn.item_knn.ItemKNN"
+            },
+            {
+                "id": "UserKNN",
+                "name": "UserKNN",
+                "description": "GroupLens: An Open Architecture for Collaborative Filtering of Netnews",
+                "parameters": [
+                    {
+                        "name": "neighbors",
+                        "default": "40"
+                    },
+                    {
+                        "name": "similarity",
+                        "default": "cosine"
+                    },
+                    {
+                        "name": "implementation",
+                        "default": "aiolli"
+                    },
+                    {
+                        "name": "neighbors",
+                        "default": "40"
+                    },
+                    {
+                        "name": "similarity",
+                        "default": "cosine"
+                    },
+                    {
+                        "name": "profile",
+                        "default": "binary"
+                    }
+                ],
+                "url": "recommenders/knn.html#elliot.recommender.knn.user_knn.user_knn.UserKNN"
+            },
+            {
+                "id": "AttributeItemKNN",
+                "name": "AttributeItemKNN",
+                "description": "Attribute Item-kNN proposed in MyMediaLite Recommender System Library",
+                "parameters": [
+                    {
+                        "name": "neighbors",
+                        "default": "40"
+                    },
+                    {
+                        "name": "similarity",
+                        "default": "cosine"
+                    }
+                ],
+                "url": "recommenders/knn.html#elliot.recommender.knn.attribute_item_knn.attribute_item_knn.AttributeItemKNN"
+            },
+            {
+                "id": "AttributeUserKNN",
+                "name": "AttributeUserKNN",
+                "description": "Attribute User-kNN proposed in MyMediaLite Recommender System Library",
+                "parameters": [
+                    {
+                        "name": "neighbors",
+                        "default": "40"
+                    },
+                    {
+                        "name": "similarity",
+                        "default": "cosine"
+                    },
+                    {
+                        "name": "profile",
+                        "default": "binary"
+                    }
+                ],
+                "url": "recommenders/knn.html#elliot.recommender.knn.attribute_user_knn.attribute_user_knn.AttributeUserKNN"
+            }
+        ]
+    },
+    {
+        "id": "Unpersonalized Recommenders",
+        "models": [
+            {
+                "id": "MostPop",
+                "name": "MostPop",
+                "description": "",
+                "parameters": [],
+                "url": "recommenders/unpersonalized.html#elliot.recommender.unpersonalized.most_popular.most_popular.MostPop"
+            },
+            {
+                "id": "Random",
+                "name": "Random",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "random_seed",
+                        "default": "42"
+                    }
+                ],
+                "url": "recommenders/unpersonalized.html#elliot.recommender.unpersonalized.random_recommender.Random.Random"
+            }
+        ]
+    },
+    {
+        "id": "Visual Models",
+        "models": [
+            {
+                "id": "ACF",
+                "name": "ACF",
+                "description": "Attentive Collaborative Filtering: Multimedia Recommendation with Item- and Component-Level Attention",
+                "parameters": [
+                    {
+                        "name": "lr",
+                        "default": "0.0005"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "50"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "100"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "128"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.000025"
+                    },
+                    {
+                        "name": "layers_component",
+                        "default": "(64, 1)"
+                    },
+                    {
+                        "name": "layers_item",
+                        "default": "(64, 1)"
+                    }
+                ],
+                "url": "recommenders/visual_recommenders.html#elliot.recommender.visual_recommenders.ACF.ACF.ACF"
+            },
+            {
+                "id": "DeepStyle",
+                "name": "DeepStyle",
+                "description": "DeepStyle: Learning User Preferences for Visual Recommendation",
+                "parameters": [
+                    {
+                        "name": "lr",
+                        "default": "0.0005"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "50"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "100"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "128"
+                    },
+                    {
+                        "name": "batch_eval",
+                        "default": "512"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.000025"
+                    }
+                ],
+                "url": "recommenders/visual_recommenders.html#elliot.recommender.visual_recommenders.DeepStyle.DeepStyle.DeepStyle"
+            },
+            {
+                "id": "DVBPR",
+                "name": "DVBPR",
+                "description": "Visually-Aware Fashion Recommendation and Design with Generative Image Models",
+                "parameters": [
+                    {
+                        "name": "lr",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "50"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "100"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "128"
+                    },
+                    {
+                        "name": "batch_eval",
+                        "default": "128"
+                    },
+                    {
+                        "name": "lambda_1",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "lambda_2",
+                        "default": "1.0"
+                    }
+                ],
+                "url": "recommenders/visual_recommenders.html#elliot.recommender.visual_recommenders.DVBPR.DVBPR.DVBPR"
+            },
+            {
+                "id": "VBPR",
+                "name": "VBPR",
+                "description": "VBPR: Visual Bayesian Personalized Ranking from Implicit Feedback",
+                "parameters": [
+                    {
+                        "name": "lr",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "50"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "100"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "128"
+                    },
+                    {
+                        "name": "batch_eval",
+                        "default": "128"
+                    },
+                    {
+                        "name": "lambda_1",
+                        "default": "0.0001"
+                    },
+                    {
+                        "name": "lambda_2",
+                        "default": "1.0"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.0005"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "50"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "100"
+                    },
+                    {
+                        "name": "factors_d",
+                        "default": "20"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "128"
+                    },
+                    {
+                        "name": "batch_eval",
+                        "default": "128"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.000025"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0"
+                    },
+                    {
+                        "name": "l_e",
+                        "default": "0.002"
+                    }
+                ],
+                "url": "recommenders/visual_recommenders.html#elliot.recommender.visual_recommenders.VBPR.VBPR.VBPR"
+            },
+            {
+                "id": "VNPR",
+                "name": "VNPR",
+                "description": "Visual Neural Personalized Ranking for Image Recommendation",
+                "parameters": [
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "50"
+                    },
+                    {
+                        "name": "mf_factors",
+                        "default": "10"
+                    },
+                    {
+                        "name": "mlp_hidden_size",
+                        "default": "(32, 1)"
+                    },
+                    {
+                        "name": "prob_keep_dropout",
+                        "default": "0.2"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "64"
+                    },
+                    {
+                        "name": "batch_eval",
+                        "default": "64"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.001"
+                    }
+                ],
+                "url": "recommenders/visual_recommenders.html#elliot.recommender.visual_recommenders.VNPR.VNPR.VNPR"
+            },
+            {
+                "id": "AMR",
+                "name": "AMR",
+                "description": "Adversarial Multimedia Recommender",
+                "parameters": [
+                    {
+                        "name": "eval_perturbations",
+                        "default": "True"
+                    },
+                    {
+                        "name": "epochs",
+                        "default": "10"
+                    },
+                    {
+                        "name": "batch_size",
+                        "default": "512"
+                    },
+                    {
+                        "name": "factors",
+                        "default": "200"
+                    },
+                    {
+                        "name": "factors_d",
+                        "default": "20"
+                    },
+                    {
+                        "name": "lr",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_w",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "l_b",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "l_e",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "eps",
+                        "default": "0.1"
+                    },
+                    {
+                        "name": "l_adv",
+                        "default": "0.001"
+                    },
+                    {
+                        "name": "adversarial_epochs",
+                        "default": "5"
+                    },
+                    {
+                        "name": "eps_iter",
+                        "default": "0.00001"
+                    },
+                    {
+                        "name": "nb_iter",
+                        "default": "20"
+                    },
+                    {
+                        "name": "nb_iter",
+                        "default": "20"
+                    },
+                    {
+                        "name": "eps_iter",
+                        "default": "0.00001"
+                    }
+                ],
+                "url": "recommenders/adversarial.html#elliot.recommender.adversarial.AMR.AMR.AMR"
+            }
+        ]
+    }
+]

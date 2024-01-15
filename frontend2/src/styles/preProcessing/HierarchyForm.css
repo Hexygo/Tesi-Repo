@@ -1,0 +1,33 @@
+
+#hier_folder {
+    display: none;
+}
+
+label[for="hier_folder"] {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    padding: 12px 24px;
+    background-color: transparent;
+    color: #1e1f22;
+    border: solid 3px #1e1f22;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+
+label[for="hier_folder"]:hover {
+    box-shadow: rgba(105, 165, 196, 0.5) 0 1px 30px;
+}
+
+.selected-filename {
+    display: inline-block;
+    margin-left: 15px;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+label[for="hier_folder"] svg{
+    position: absolute;
+    top: 11px;
+    left: 1px;
+
+}

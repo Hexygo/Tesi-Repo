@@ -1,0 +1,15 @@
+
+.removeButt{
+    position: absolute;
+    margin-left: 23.5%;
+    background-image: url('../../images/closeWindow.png');
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
+.removeButt:hover{
+    cursor: pointer;
+    box-shadow: rgb(82, 83, 82) 0 1px 30px;
+    transition: all 0.5s;
+}
+

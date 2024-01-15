@@ -1,0 +1,14 @@
+[
+  {
+    "id": "Unpersonalized Recommenders",
+    "models": ["Most Popular","Random Recommender"]
+  },
+  {
+    "id": "Algebric",
+    "models": ["SlopeOne"]
+  },
+  {
+    "id": "Autoencoders",
+    "models": ["MultiDAE", "MultiVAE"]
+  }
+]

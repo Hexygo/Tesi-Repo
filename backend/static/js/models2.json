@@ -1,0 +1,22 @@
+[
+  {
+    "id": "Unpersonalized Recommenders",
+    "models": [
+      {"id":"MostPop","name":"Most Popular","parameters": []},
+      {"id":"Random","name":"Random Recommender","parameters": ["random_seed"]}
+    ]
+  },
+  {
+    "id": "Algebric",
+    "models": [
+      {"id":"SlopeOne","name":"SlopeOne","parameters": []}
+    ]
+  },
+  {
+    "id": "Autoencoders",
+    "models": [
+      {"id":"MultiDAE","name":"MultiDAE","parameters":["epochs","batch_size","intermediate_dim","latent_dim","reg_lambda","lr","dropout_pkeep"]},
+      {"id":"MultiDAE","name":"MultiVAE","parameters":["epochs","batch_size","intermediate_dim","latent_dim","reg_lambda","lr","dropout_pkeep"]}
+    ]
+  }
+]

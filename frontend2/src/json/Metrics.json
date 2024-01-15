@@ -1,0 +1,178 @@
+[
+    {
+        "id": "Accuracy",
+        "simple_metrics": [
+            "AUC",
+            "GAUC",
+            "LAUC",
+            "F1",
+            "HR",
+            "MAP",
+            "MAR",
+            "MRR",
+            "nDCG",
+            "nDCG",
+            "Precision",
+            "Recall"
+        ],
+        "complex_metrics": [
+            {
+                "id": "DSC",
+                "parameters": [
+                    "beta"
+                ]
+            },
+            {
+                "id": "ExtendedF1",
+                "parameters": []
+            }
+        ],
+        "url": "metrics/accuracy.html#elliot.evaluation.metrics.accuracy.AUC.auc.AUC"
+    },
+    {
+        "id": "Bias",
+        "simple_metrics": [
+            "ACLT",
+            "APLT",
+            "ARP",
+            "PopREO",
+            "PopRSP"
+        ],
+        "complex_metrics": [
+            {
+                "id": "ExtendedPopREO",
+                "parameters": []
+            },
+            {
+                "id": "ExtendedPopRSP",
+                "parameters": []
+            }
+        ],
+        "url": "metrics/bias.html#elliot.evaluation.metrics.bias.aclt.aclt.ACLT"
+    },
+    {
+        "id": "Coverage",
+        "simple_metrics": [
+            "ItemCoverage",
+            "NumRetrieved",
+            "UserCoverage",
+            "UserCoverageAtN"
+        ],
+        "complex_metrics": [],
+        "url": "metrics/coverage.html#elliot.evaluation.metrics.coverage.item_coverage.item_coverage.ItemCoverage"
+    },
+    {
+        "id": "Diversity",
+        "simple_metrics": [
+            "Gini",
+            "SEntropy",
+            "SRecall"
+        ],
+        "complex_metrics": [],
+        "url": "metrics/diversity.html#elliot.evaluation.metrics.diversity.gini_index.gini_index.GiniIndex"
+    },
+    {
+        "id": "Fairness",
+        "simple_metrics": [],
+        "complex_metrics": [
+            {
+                "id": "BiasDisparityBD",
+                "parameters": [
+                    "user_clustering_name",
+                    "user_clustering_file",
+                    "item_clustering_name",
+                    "item_clustering_file"
+                ]
+            },
+            {
+                "id": "BiasDisparityBR",
+                "parameters": [
+                    "user_clustering_name",
+                    "user_clustering_file",
+                    "item_clustering_name",
+                    "item_clustering_file"
+                ]
+            },
+            {
+                "id": "BiasDisparityBS",
+                "parameters": [
+                    "user_clustering_name",
+                    "user_clustering_file",
+                    "item_clustering_name",
+                    "item_clustering_file"
+                ]
+            },
+            {
+                "id": "ItemMADranking",
+                "parameters": [
+                    "clustering_name",
+                    "clustering_file"
+                ]
+            },
+            {
+                "id": "ItemMADrating",
+                "parameters": [
+                    "clustering_name",
+                    "clustering_file"
+                ]
+            },
+            {
+                "id": "UserMADranking",
+                "parameters": [
+                    "clustering_name",
+                    "clustering_file"
+                ]
+            },
+            {
+                "id": "UserMADrating",
+                "parameters": [
+                    "clustering_name",
+                    "clustering_file"
+                ]
+            },
+            {
+                "id": "REO",
+                "parameters": [
+                    "clustering_name",
+                    "clustering_file"
+                ]
+            },
+            {
+                "id": "RSP",
+                "parameters": [
+                    "clustering_name",
+                    "clustering_file"
+                ]
+            }
+        ],
+        "url": "metrics/fairness.html#module-elliot.evaluation.metrics.fairness.BiasDisparity.BiasDisparityBD"
+    },
+    {
+        "id": "Novelty",
+        "simple_metrics": [
+            "EFD",
+            "EPC"
+        ],
+        "complex_metrics": [
+            {
+                "id": "ExtendedEFD",
+                "parameters": []
+            },
+            {
+                "id": "ExtendedEPC",
+                "parameters": []
+            }
+        ],
+        "url": "metrics/novelty.html#elliot.evaluation.metrics.novelty.EFD.efd.EFD"
+    },
+    {
+        "id": "Rating",
+        "simple_metrics": [
+            "MAE",
+            "MSE",
+            "RMSE"
+        ],
+        "complex_metrics": [],
+        "url": "metrics/rating.html#elliot.evaluation.metrics.rating.mae.mae.MAE"
+    }
+]

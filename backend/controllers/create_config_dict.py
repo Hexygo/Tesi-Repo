@@ -51,7 +51,7 @@ def splitting_config(experiment, request, context):
                 context+'_random_cross_validation_folds'))
 
 def dataset_config(experiment, request):
-    name = str(uuid.uuid4())
+    name = str(uuid.uuid4()) # genera un nome univoco per il salvataggio del file
     _path = 'data/' + name
     os.makedirs(_path, exist_ok=False)
     dataset_path = _path + '/dataset.tsv'
@@ -115,8 +115,7 @@ def dataset_config(experiment, request):
     experiment['splitting']['save_folder'] = save_folder
     
 def fixed_config(experiment, request):
-    print('selected fixed strategy')
-    name = str(uuid.uuid4())
+    name = str(uuid.uuid4()) # genera un nome univoco per il salvataggio del file
     _path = '../data/' + name
     os.makedirs(_path, exist_ok=False)
 
@@ -132,8 +131,6 @@ def fixed_config(experiment, request):
         experiment['data_config']['validation_path'] = validation_path
 
     experiment['dataset'] = request.files['file'].filename
-    # così ho preso il nome del dataset passato dall'utente (caso strategia dataset)
-    # vedi come funziona con hierarchy e fixed poi
 
     # gestione salvataggio dati splittati (scegliamo lato backend di salvarli, non sceglie l'utente)
     save_folder = 'splitted_data/' + name
@@ -143,7 +140,7 @@ def fixed_config(experiment, request):
     return
 
 def hierarchy_config(experiment, request):
-    name = str(uuid.uuid4())
+    name = str(uuid.uuid4()) # genera un nome univoco per il salvataggio del file
     _path = '../data/' + name
     os.makedirs(_path, exist_ok=False)
 
@@ -152,8 +149,6 @@ def hierarchy_config(experiment, request):
     experiment['data_config']['root_folder'] = _path
 
     experiment['dataset'] = request.files['file'].filename
-    # così ho preso il nome del dataset passato dall'utente (caso strategia dataset)
-    # vedi come funziona con hierarchy e fixed poi
 
     # gestione salvataggio dati splittati (scegliamo lato backend di salvarli, non sceglie l'utente)
     save_folder = 'splitted_data/' + name

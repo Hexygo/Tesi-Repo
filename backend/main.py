@@ -90,7 +90,7 @@ def send_results(request_no):
     return response
 
 # Load the json file into memory
-with open("static/js/models2.json") as f:
+with open(os.path.join(os.path.dirname(__file__),'static','js','models2.json')) as f:
     file = json.load(f)
 
 #@app.route("/recommendation")

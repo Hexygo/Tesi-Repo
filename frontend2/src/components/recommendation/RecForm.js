@@ -22,8 +22,7 @@ import {enqueueSnackbar} from "notistack";
 function RecForm() {
 
     const request = {
-        top_k: false,
-        top_k_value: undefined,
+        top_k: undefined,
         models: undefined,
         train_file: undefined,
         test_file: undefined,
@@ -38,6 +37,7 @@ function RecForm() {
     const [downloadLink, setDownloadLink] = useState()
     const KNOWN_KEYS = ["id", "modelClass", "loading_model"];
     const [requestState, setRequestState] = useState(request);
+    const [useTopK, setUseTopK] = useState(false)
 
     const filterKey = (obj, keysToKeep) => {
         return Object.keys(obj).filter((key) => keysToKeep.includes(key)).reduce((ObjAcc, key) => {
@@ -88,7 +88,7 @@ function RecForm() {
         );
     }
     const handleChange = (e) => {
-        setRequestState((requestState) => ({...requestState, top_k_value: e.target.value}))
+        setRequestState((requestState) => ({...requestState, top_k: e.target.value}))
     }
 
     const handleSubmit = (e) => {
@@ -156,9 +156,9 @@ function RecForm() {
                     <Box sx={{mt: 1}}>
                         <FormGroup sx={{alignItems: 'center'}}>
                             <FormControlLabel label="Use top-k" control={<Checkbox/>} onChange={() => {
-                                setRequestState(requestState => ({...requestState, top_k: !requestState.top_k}));
+                                setUseTopK(!useTopK);
                             }}/>
-                            {requestState.top_k ? (
+                            {useTopK? (
                                 <TextField onChange={handleChange} size="small" type="number" label="Value for k"/>
                             ) : (<></>)}
                         </FormGroup>

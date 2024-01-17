@@ -151,8 +151,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 
-# datasets
+# datasets and results
 backend/data/
 backend/splitted_data/
 backend/zipped_data/
 data/
+backend/results
+
+# vscode
+.vscode

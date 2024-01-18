@@ -40,12 +40,14 @@ def create_model_config_dict(request):
         config['experiment']['models'][model['loading_model']] = dict()
         config['experiment']['models'][model['loading_model']]['meta'] = dict()
         config['experiment']['models'][model['loading_model']]['meta']['verbose'] = False
-        config['experiment']['models'][model['loading_model']]['meta']['save_weights'] = True # TODO controllare che da frontend sia fatto
-        config['experiment']['models'][model['loading_model']]['meta']['save_recs'] = True # TODO preparare il commit per questo problema
-        if model['loading_model'] != 'Random':
-            config['experiment']['models'][model['loading_model']]['meta']['validation_metric'] = model.get('validation_metric', '')
-            validation_rate = int(model.get('validation_rate'))
-            config['experiment']['models'][model['loading_model']]['meta']['validation_metric'] = model.get('validation_metric', '')+'@'+str(validation_rate)
+        config['experiment']['models'][model['loading_model']]['meta']['save_recs'] = True # Abilita il salvataggio delle raccomandazioni
+
+        config['experiment']['models'][model['loading_model']]['meta']['save_weights'] = model.get('save_weights') # TODO controllare che vengano salvati o meno i pesi
+        
+        config['experiment']['models'][model['loading_model']]['meta']['validation_metric'] = model.get('validation_metric', '') # Ci permette di comporre il Validation Rate della relativa metric, che vengono forniti separatamente da frontend TODO si potrebbe correggere lato frontend, ed eliminare questo problema
+        validation_rate = int(model.get('validation_rate'))
+        config['experiment']['models'][model['loading_model']]['meta']['validation_metric'] = model.get('validation_metric', '')+'@'+str(validation_rate)
+        
         config['experiment']['models'][model['loading_model']]['meta']['hyper_opt_alg'] = model.get('hyper_opt_alg')
         config['experiment']['models'][model['loading_model']]['meta']['hyper_max_evals'] = model.get('hyper_max_evals')
         for parameter in model:

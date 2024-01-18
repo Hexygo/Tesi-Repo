@@ -36,7 +36,6 @@ function EvForm({evStep, previousevStep, setPreviousevStep, setEvStep}) {
         recs_dataset: undefined,
 
         fairness: {}
-
     }
     const trainDatasetRef = React.useRef();
     const testDatasetRef = React.useRef();
@@ -114,7 +113,7 @@ function EvForm({evStep, previousevStep, setPreviousevStep, setEvStep}) {
         e.preventDefault()
         setLoading(true);
         const formData = objectToFormData(requestState)
-        fetch("http://127.0.0.1:5000/api/v1/recommendationmodel-json", {
+        fetch("http://127.0.0.1:5000/api/v1/evaluation", {
             method: 'POST',
             body: formData
         }).then(res => res.json())

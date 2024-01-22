@@ -155,7 +155,6 @@ cython_debug/
 backend/data/
 backend/splitted_data/
 backend/zipped_data/
-data/
 backend/results
 
 # vscode

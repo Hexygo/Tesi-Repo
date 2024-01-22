@@ -14,6 +14,7 @@ import shutil
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 # @app.route("/")  # decoratore che specifica quale percorso poi richiama la def homepage
 # def homepage():
@@ -47,7 +48,6 @@ def preprocess():
 
 # API usato per effettuare il preprocessing con una richiesta asincrona
 @app.route("/api/v1/preprocessing-json", methods=['GET', 'POST'])
-@cross_origin()
 def preprocess_json():
     # request deve essere passato ad una funzione che generi un dizionario contenente le informazioni che ci servono
     if request.method == 'POST':
@@ -60,7 +60,6 @@ def preprocess_json():
         return jsonify(request_no)
 
 @app.route("/api/v1/evaluation", methods=['POST'])
-@cross_origin()
 def evaluationApi():
     print("richiesta in elaborazione ")
     config, path = create_evaluation_config_dict(request)
@@ -68,7 +67,6 @@ def evaluationApi():
     return jsonify({'status':'success', 'result': test, 'path':path}), 201
 
 @app.route("/api/v1/evaluation/download", methods=['GET'])
-@cross_origin()
 def download_file():
     path=request.args.get('path')
     output_filename='evaluation_zipped'
@@ -79,7 +77,6 @@ def download_file():
 
 # API per scaricare il dataset preprocessato
 @app.route('/api/v1/preprocessing/download/<request_no>', methods=['GET'])
-@cross_origin()
 def send_results(request_no):
     print('received a request of download')
     print(request_no)
@@ -101,7 +98,6 @@ with open(os.path.join(os.path.dirname(__file__),'static','js','models2.json')) 
 
 #test send form data tonio
 @app.route("/api/v1/recommendationmodel", methods=['GET', 'POST'])
-@cross_origin()
 def recommendationmodel():
     # request deve essere passato ad una funzione che generi un dizionario contenente le informazioni che ci servono
     if request.method == 'POST':
@@ -116,7 +112,6 @@ def recommendationmodel():
 
 # API usato con una richiesta asincrona
 @app.route("/api/v1/recommendationmodel-json", methods=['GET', 'POST'])
-@cross_origin()
 def recommendationmodel_json():
     # request deve essere passato ad una funzione che generi un dizionario contenente le informazioni che ci servono
     if request.method == 'POST':
@@ -128,7 +123,6 @@ def recommendationmodel_json():
 
 # API per scaricare il dataset preprocessato
 @app.route('/api/v1/recommendationmodel/download/<request_no>', methods=['GET'])
-@cross_origin()
 def send_results_model(request_no):
     print('received a request of download')
     print(request_no)

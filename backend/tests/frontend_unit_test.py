@@ -12,7 +12,7 @@ BASE_URL = 'http://localhost:3000'
 
 @pytest.fixture
 def start_container():
-    with DockerContainer('tesi--frontend').with_bind_ports(3000,3000) as container:
+    with DockerContainer('tesi-repo-frontend').with_bind_ports(3000,3000) as container:
         return container
     
 def test_has_title(start_container,page:Page): # Controlla che la pagina sia stata deployata correttamente

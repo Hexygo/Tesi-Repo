@@ -7,49 +7,6 @@ from flask import Flask, request
 import zipfile  # per gestire lo zip inviato nella strategia hierarchy
 import json
 
-def splitting_config(experiment, request, context):
-    experiment['splitting'][context+'_splitting'] = dict()
-    count = 0
-    if request.form.get(context+'_fixed_timestamp', type=json.loads):
-        experiment['splitting'][context+'_splitting']['strategy'] = 'fixed_timestamp'
-        count+=1
-        if request.form.get(context+'_fixed_timestamp_value') == 'best':
-            experiment['splitting'][context+'_splitting']['timestamp'] = 'best'
-        else:
-            experiment['splitting'][context+'_splitting']['timestamp'] = int(request.form.get(
-                    context+'_fixed_timestamp_value',
-                    type=json.loads))
-    if request.form.get(context+'_temporal_hold_out', type=json.loads):
-        experiment['splitting'][context+'_splitting']['strategy'] = 'temporal_hold_out'
-        count+=1
-        if count > 1:
-            raise('Multiple '+context+' Splitting Strategies Chosen')
-        if request.form.get(context+'_temporal_hold_out_'+context+'_ratio'):
-            experiment['splitting'][context+'_splitting'][context+'_ratio'] = float(request.form.get(context+'_temporal_hold_out'+context+'_ratio'))
-        else:
-            experiment['splitting'][context+'_splitting']['leave_n_out'] = int(request.form.get(context+'_temporal_hold_out'+context+'_leave_n_out'))
-    if request.form.get(context+'_random_subsampling', type=json.loads):
-        experiment['splitting'][context+'_splitting']['strategy'] = 'random_subsampling'
-        count+=1
-        if count > 1:
-            raise('Multiple '+context+' Splitting Strategies Chosen')
-        if request.form.get(context+'_random_subsampling_'+context+'_ratio', type=json.loads):
-            experiment['splitting'][context+'_splitting'][context+'_ratio'] = float(request.form.get(
-                    context+'_random_subsampling_'+context+'_ratio'))
-        else:
-            experiment['splitting'][context+'_splitting']['leave_n_out'] = int(request.form.get(
-                    context+'_random_subsampling_leave_n_out'))
-        if request.form.get(context+'_random_subsampling_folds', type=json.loads):
-            experiment['splitting'][context+'_splitting']['folds'] = int(request.form.get(
-                    context+'_random_subsampling_folds'))
-    if request.form.get(context+'_random_cross_validation', type=json.loads):
-        experiment['splitting'][context+'_splitting']['strategy'] = 'random_cross_validation'
-        count+=1
-        if count > 1:
-            raise('Multiple '+context+' Splitting Strategies Chosen')
-        experiment['splitting'][context+'_splitting']['folds'] = int(request.form.get(
-                context+'_random_cross_validation_folds'))
-
 def dataset_config(experiment, request):
     name = str(uuid.uuid4()) # genera un nome univoco per il salvataggio del file
     _path = 'data/' + name
@@ -62,7 +19,6 @@ def dataset_config(experiment, request):
     # Con questa ottimizzazione si passa da O(N) a O(1)
     experiment['prefiltering'] = [] # Lista delle strategie di Prefiltering
     if request.form.get('global_threshold', type=json.loads):
-        print('odio python')
         experiment['prefiltering'].append(dict(
             strategy = 'global_treshold',
             threshold = int(request.form.get('global_treshold_treshold'))
@@ -99,6 +55,50 @@ def dataset_config(experiment, request):
         ))  
     
     experiment['splitting'] = dict()
+
+    def splitting_config(experiment, request, context):
+        experiment['splitting'][context+'_splitting'] = dict()
+        count = 0
+        if request.form.get(context+'_fixed_timestamp', type=json.loads):
+            experiment['splitting'][context+'_splitting']['strategy'] = 'fixed_timestamp'
+            count+=1
+            if request.form.get(context+'_fixed_timestamp_value') == 'best':
+                experiment['splitting'][context+'_splitting']['timestamp'] = 'best'
+            else:
+                experiment['splitting'][context+'_splitting']['timestamp'] = int(request.form.get(
+                        context+'_fixed_timestamp_value',
+                        type=json.loads))
+        if request.form.get(context+'_temporal_hold_out', type=json.loads):
+            experiment['splitting'][context+'_splitting']['strategy'] = 'temporal_hold_out'
+            count+=1
+            if count > 1:
+                raise('Multiple '+context+' Splitting Strategies Chosen')
+            if request.form.get(context+'_temporal_hold_out_'+context+'_ratio'):
+                experiment['splitting'][context+'_splitting'][context+'_ratio'] = float(request.form.get(context+'_temporal_hold_out'+context+'_ratio'))
+            else:
+                experiment['splitting'][context+'_splitting']['leave_n_out'] = int(request.form.get(context+'_temporal_hold_out'+context+'_leave_n_out'))
+        if request.form.get(context+'_random_subsampling', type=json.loads):
+            experiment['splitting'][context+'_splitting']['strategy'] = 'random_subsampling'
+            count+=1
+            if count > 1:
+                raise('Multiple '+context+' Splitting Strategies Chosen')
+            if request.form.get(context+'_random_subsampling_'+context+'_ratio', type=json.loads):
+                experiment['splitting'][context+'_splitting'][context+'_ratio'] = float(request.form.get(
+                        context+'_random_subsampling_'+context+'_ratio'))
+            else:
+                experiment['splitting'][context+'_splitting']['leave_n_out'] = int(request.form.get(
+                        context+'_random_subsampling_leave_n_out'))
+            if request.form.get(context+'_random_subsampling_folds', type=json.loads):
+                experiment['splitting'][context+'_splitting']['folds'] = int(request.form.get(
+                        context+'_random_subsampling_folds'))
+        if request.form.get(context+'_random_cross_validation', type=json.loads):
+            experiment['splitting'][context+'_splitting']['strategy'] = 'random_cross_validation'
+            count+=1
+            if count > 1:
+                raise('Multiple '+context+' Splitting Strategies Chosen')
+            experiment['splitting'][context+'_splitting']['folds'] = int(request.form.get(
+                    context+'_random_cross_validation_folds'))
+
     # Test Splitting
     splitting_config(experiment, request, 'test')
 

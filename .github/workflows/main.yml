@@ -22,7 +22,7 @@ jobs:
     - name: Install playwright and browsers
       run: |
         pip install playwright
-        playwright install install-deps
+        playwright install | playwright install-deps
     - name: Test with pytest
       run: |
         pip install pytest pytest-cov pytest-playwright

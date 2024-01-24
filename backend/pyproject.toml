@@ -1,4 +1,5 @@
 [tool.pytest.ini_options]
+addopts = "--browser firefox --browser chromium --browser webkit"
 markers = [
     "slow: marks tests as slow",
     "serial",

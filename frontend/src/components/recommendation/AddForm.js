@@ -40,7 +40,7 @@ function AddForm({...props}) {
     }
     return (
 
-        <Container sx={{display: 'flex', width: '400px', p: 0}}>
+        <Container data-testid='model' sx={{display: 'flex', width: '400px', p: 0}}>
             <Card variant="outlined" sx={{
                 width: '100%',
                 mb: 3,
@@ -49,7 +49,7 @@ function AddForm({...props}) {
                 borderRadius: '20px'
             }}>
                 <Box>
-                    <IconButton onClick={() => props.removeModel(props.id)}>
+                    <IconButton data-testid='close' onClick={() => props.removeModel(props.id)}>
                         <Close/>
                     </IconButton>
                 </Box>

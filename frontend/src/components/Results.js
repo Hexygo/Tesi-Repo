@@ -30,7 +30,7 @@ export default function Results(props) {
                     Elaborazione completata!
                 </Typography>
                 <Typography id="modal-modal-description" sx={{mt: 2}}>
-                    Scarica i tuoi risultati da <a href={props.url}>questo link</a>.
+                    Scarica i tuoi risultati da <a data-testid='result' href={props.url} onClick={handleClose}>questo link</a>.
                 </Typography>
             </Box>
         </Modal>

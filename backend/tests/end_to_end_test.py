@@ -8,12 +8,12 @@ import os
 
 @pytest.fixture
 def start_container_frontend():
-    with DockerContainer('tesi--frontend').with_bind_ports(3000,3000) as container:
+    with DockerContainer('tesi-repo-frontend').with_bind_ports(3000,3000) as container:
         return container
 
 @pytest.fixture   
 def start_container_backend():
-    with DockerContainer('tesi--backend').with_bind_ports(5000,5000) as container:
+    with DockerContainer('tesi-repo-backend').with_bind_ports(5000,5000) as container:
         return container
 
 def test_can_run_trough_form(start_container_frontend,start_container_backend, page:Page): # Verifica il corretto funzionamento del form di upload

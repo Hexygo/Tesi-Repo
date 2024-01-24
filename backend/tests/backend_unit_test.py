@@ -10,7 +10,7 @@ BASE_URL='http://127.0.0.1:5000'
 
 @pytest.fixture
 def  start_container(): #fixture per avviare il container
-    with DockerContainer('tesi--backend').with_bind_ports(5000,5000) as container:
+    with DockerContainer('tesi-repo-backend').with_bind_ports(5000,5000) as container:
         return container
 
 def test_container_running(start_container): # Verifica che il container sia attivo, e quindi che non ci siano stati errori di build

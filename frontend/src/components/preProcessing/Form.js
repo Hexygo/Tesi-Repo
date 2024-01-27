@@ -125,10 +125,90 @@ function Form(props) {
         setFileName('');
     }
 
+    function translateRequest(requestState){ //Trasforma e semplifica la richiesta, per poterla semplificare nel backend
+        const request = {
+            loading_strategy:requestState.loading_strategy,
+            binarize:requestState.binarize,
+            random_seed:requestState.random_seed,
+
+            file:requestState.file,
+        }
+        
+        if(requestState.loading_strategy === 'fixed'){
+            request.train_file = requestState.train_file
+            request.test_file = requestState.test_file
+        }
+
+        if(requestState.loading_strategy!=='dataset') // Se la strategia non è dataset, non sono necessari altri passaggi, né altri parametri
+            return request
+        
+        const prefilteringStrategies = []
+
+        if(requestState.global_threshold)
+            prefilteringStrategies.push({strategy:'global_threshold', threshold:requestState.global_threshold_threshold})
+        if(requestState.user_average)
+            prefilteringStrategies.push({strategy:'user_average'})
+        if(requestState.user_k_core)
+            prefilteringStrategies.push({strategy:'user_k_core', core:requestState.user_k_core_core})
+        if(requestState.item_k_core)
+            prefilteringStrategies.push({strategy:'item_k_core', core:requestState.item_k_core_core})
+        if(requestState.iterative_k_core)
+            prefilteringStrategies.push({strategy:'iterative_k_core', core:requestState.iterative_k_core_core})
+        if(requestState.n_rounds_k_core)
+            prefilteringStrategies.push({strategy:'n_rounds_k_core', core:requestState.n_rounds_k_core_core, rounds:requestState.n_rounds_k_core_rounds})
+        if(requestState.cold_users)
+            prefilteringStrategies.push({strategy:'cold_users', treshold:requestState.cold_users_threshold})
+
+        request.prefiltering_strategies = JSON.stringify(prefilteringStrategies) // In questo modo eliminiamo la ridondanza nelle strategie di prefiltering, e semplifichiamo il lavoro al backend
+
+        // Qui gestiamo la strategia di splitting di test
+        if (requestState.test_fixed_timestamp){
+            request.test_splitting_strategy = 'fixed_timestamp'
+            request.test_splitting_timestamp = requestState.test_fixed_timestamp_value
+        }
+        if (requestState.test_temporal_hold_out){
+            request.test_splitting_strategy = 'temporal_hold_out'
+            if(requestState.test_temporal_hold_out_leave_n_out === 0) 
+                request.test_splitting_ratio = requestState.test_temporal_hold_out_test_ratio
+            else
+                request.test_splitting_leave_n_out = requestState.test_temporal_hold_out_leave_n_out
+        }
+        if (requestState.test_random_subsampling){
+            request.test_splitting_strategy = 'random_subsampling'
+            request.test_splitting_ratio = requestState.test_random_subsampling_test_ratio // TODO: andrebbero implementati anche folds, o eventuale leave_n_out
+        }
+        if (requestState.test_random_cross_validation){
+            request.test_splitting_strategy = 'random_cross_validation'
+            request.test_splitting_folds = requestState.test_random_cross_validation_folds
+        }
+
+        // Qui gestiamo la strategia di splitting di validazione
+        if (requestState.validation_fixed_timestamp){
+            request.validation_splitting_strategy = 'fixed_timestamp'
+            request.validation_splitting_timestamp = requestState.validation_fixed_timestamp_value
+        }
+        if (requestState.validation_temporal_hold_out){
+            request.validation_splitting_strategy = 'temporal_hold_out'
+            if(requestState.validation_temporal_hold_out_leave_n_out === 0) 
+                request.validation_splitting_ratio = requestState.validation_temporal_hold_out_validation_ratio
+            else
+                request.validation_splitting_leave_n_out = requestState.validation_temporal_hold_out_leave_n_out
+        }
+        if (requestState.validation_random_subsampling){
+            request.validation_splitting_strategy = 'random_subsampling'
+            request.validation_splitting_ratio = requestState.validation_random_subsampling_validation_ratio // TODO: andrebbero implementati anche folds, o eventuale leave_n_out
+        }
+        if (requestState.validation_random_cross_validation){
+            request.validation_splitting_strategy = 'random_cross_validation'
+            request.validation_splitting_folds = requestState.validation_random_cross_validation_folds
+        }
+        return request
+    }
+
     const FormSubmit = (e) => {
         e.preventDefault()
         setLoading(true)
-        const formData = objectToFormData(requestState)
+        const formData = objectToFormData(translateRequest(requestState))
         fetch('http://127.0.0.1:5000/api/v1/preprocessing-json', {
             method: 'POST',
             body: formData

@@ -18,92 +18,82 @@ def dataset_config(experiment, request):
     # Prefiltering
     # Con questa ottimizzazione si passa da O(N) a O(1)
     experiment['prefiltering'] = [] # Lista delle strategie di Prefiltering
-    if request.form.get('global_threshold', type=json.loads):
-        experiment['prefiltering'].append(dict(
-            strategy = 'global_treshold',
-            threshold = int(request.form.get('global_treshold_treshold'))
-        ))
-    if request.form.get('user_average', type=json.loads):
-        experiment['prefiltering'].append(dict(
-            strategy = 'user_average'
-        ))
-    if request.form.get('user_k_core', type=json.loads):
-        experiment['prefiltering'].append(dict(
-            strategy = 'user_k_core',
-            core = int(request.form.get('user_k_core_core'))
-        ))
-    if request.form.get('item_k_core', type=json.loads):
-        experiment['prefiltering'].append(dict(
-            strategy = 'item_k_core',
-            core = int(request.form.get('item_k_core_core'))
-        ))
-    if request.form.get('iterative_k_core', type=json.loads):
-        experiment['prefiltering'].append(dict(
-            strategy = 'iterative_k_core',
-            core = int(request.form.get('iterative_k_core_core'))
-        ))
-    if request.form.get('n_rounds_k_core', type=json.loads):
-        experiment['prefiltering'].append(dict(
-            strategy = 'n_rounds_k_core',
-            core = int(request.form.get('n_rounds_k_core_core')),
-            rounds = int(request.form.get('n_rounds_k_core_rounds'))
-        ))
-    if request.form.get('cold_users', type=json.loads):
-        experiment['prefiltering'].append(dict(
-            strategy = 'cold_users',
-            threshold = int(request.form.get('cold_users_threshold'))
-        ))  
+    for strat in request.form.get('prefiltering_strategies', type=json.loads):
+        if 'threshold' in strat:
+            strat['threshold'] = int(strat['threshold'])
+        if 'core' in strat:
+            strat['core'] = int(strat['core'])
+        if 'rounds' in strat:
+            strat['rounds'] = int(strat['rounds'])
+        experiment['prefiltering'].append(strat)
+    # experiment['prefiltering'] = [] 
+    # if request.form.get('global_threshold', type=json.loads):
+    #     experiment['prefiltering'].append(dict(
+    #         strategy = 'global_treshold',
+    #         threshold = int(request.form.get('global_treshold_treshold'))
+    #     ))
+    # if request.form.get('user_average', type=json.loads):
+    #     experiment['prefiltering'].append(dict(
+    #         strategy = 'user_average'
+    #     ))
+    # if request.form.get('user_k_core', type=json.loads):
+    #     experiment['prefiltering'].append(dict(
+    #         strategy = 'user_k_core',
+    #         core = int(request.form.get('user_k_core_core'))
+    #     ))
+    # if request.form.get('item_k_core', type=json.loads):
+    #     experiment['prefiltering'].append(dict(
+    #         strategy = 'item_k_core',
+    #         core = int(request.form.get('item_k_core_core'))
+    #     ))
+    # if request.form.get('iterative_k_core', type=json.loads):
+    #     experiment['prefiltering'].append(dict(
+    #         strategy = 'iterative_k_core',
+    #         core = int(request.form.get('iterative_k_core_core'))
+    #     ))
+    # if request.form.get('n_rounds_k_core', type=json.loads):
+    #     experiment['prefiltering'].append(dict(
+    #         strategy = 'n_rounds_k_core',
+    #         core = int(request.form.get('n_rounds_k_core_core')),
+    #         rounds = int(request.form.get('n_rounds_k_core_rounds'))
+    #     ))
+    # if request.form.get('cold_users', type=json.loads):
+    #     experiment['prefiltering'].append(dict(
+    #         strategy = 'cold_users',
+    #         threshold = int(request.form.get('cold_users_threshold'))
+    #     ))  
     
     experiment['splitting'] = dict()
 
-    def splitting_config(experiment, request, context):
-        experiment['splitting'][context+'_splitting'] = dict()
-        count = 0
-        if request.form.get(context+'_fixed_timestamp', type=json.loads):
-            experiment['splitting'][context+'_splitting']['strategy'] = 'fixed_timestamp'
-            count+=1
-            if request.form.get(context+'_fixed_timestamp_value') == 'best':
-                experiment['splitting'][context+'_splitting']['timestamp'] = 'best'
-            else:
-                experiment['splitting'][context+'_splitting']['timestamp'] = int(request.form.get(
-                        context+'_fixed_timestamp_value',
-                        type=json.loads))
-        if request.form.get(context+'_temporal_hold_out', type=json.loads):
-            experiment['splitting'][context+'_splitting']['strategy'] = 'temporal_hold_out'
-            count+=1
-            if count > 1:
-                raise('Multiple '+context+' Splitting Strategies Chosen')
-            if request.form.get(context+'_temporal_hold_out_'+context+'_ratio'):
-                experiment['splitting'][context+'_splitting'][context+'_ratio'] = float(request.form.get(context+'_temporal_hold_out'+context+'_ratio'))
-            else:
-                experiment['splitting'][context+'_splitting']['leave_n_out'] = int(request.form.get(context+'_temporal_hold_out'+context+'_leave_n_out'))
-        if request.form.get(context+'_random_subsampling', type=json.loads):
-            experiment['splitting'][context+'_splitting']['strategy'] = 'random_subsampling'
-            count+=1
-            if count > 1:
-                raise('Multiple '+context+' Splitting Strategies Chosen')
-            if request.form.get(context+'_random_subsampling_'+context+'_ratio', type=json.loads):
-                experiment['splitting'][context+'_splitting'][context+'_ratio'] = float(request.form.get(
-                        context+'_random_subsampling_'+context+'_ratio'))
-            else:
-                experiment['splitting'][context+'_splitting']['leave_n_out'] = int(request.form.get(
-                        context+'_random_subsampling_leave_n_out'))
-            if request.form.get(context+'_random_subsampling_folds', type=json.loads):
-                experiment['splitting'][context+'_splitting']['folds'] = int(request.form.get(
-                        context+'_random_subsampling_folds'))
-        if request.form.get(context+'_random_cross_validation', type=json.loads):
-            experiment['splitting'][context+'_splitting']['strategy'] = 'random_cross_validation'
-            count+=1
-            if count > 1:
-                raise('Multiple '+context+' Splitting Strategies Chosen')
-            experiment['splitting'][context+'_splitting']['folds'] = int(request.form.get(
-                    context+'_random_cross_validation_folds'))
-
     # Test Splitting
-    splitting_config(experiment, request, 'test')
+    experiment['splitting']['test_splitting'] = dict()
+    experiment['splitting']['test_splitting']['strategy'] = request.form.get('test_splitting_strategy')
+    if 'test_splitting_timestamp' in request.form:
+        if request.form.get('test_splitting_timestamp') == 'best':
+            experiment['splitting']['test_splitting']['timestamp'] = 'best'
+        else:
+            experiment['splitting']['test_splitting']['timestamp'] = int(request.form.get('test_splitting_timestamp_value', type=json.loads))
+    if 'test_splitting_ratio' in request.form:
+        experiment['splitting']['test_splitting']['test_ratio'] = float(request.form.get('test_splitting_ratio'))
+    if 'test_splitting_leave_n_out' in request.form:
+        experiment['splitting']['test_splitting']['leave_n_out'] = int(request.form.get('test_splitting_leave_n_out'))
+    if 'test_splitting_folds' in request.form:
+        experiment['splitting']['test_splitting']['folds'] = int(request.form.get('test_splitting_folds'))
 
     # Validation Splitting
-    splitting_config(experiment, request, 'validation')
+    experiment['splitting']['validation_splitting'] = dict()
+    experiment['splitting']['validation_splitting']['strategy'] = request.form.get('validation_splitting_strategy')
+    if 'validation_splitting_timestamp' in request.form:
+        if request.form.get('validation_splitting_timestamp') == 'best':
+            experiment['splitting']['validation_splitting']['timestamp'] = 'best'
+        else:
+            experiment['splitting']['validation_splitting']['timestamp'] = int(request.form.get('validation_splitting_timestamp_value', type=json.loads))
+    if 'validation_splitting_ratio' in request.form:
+        experiment['splitting']['validation_splitting']['validation_ratio'] = float(request.form.get('validation_splitting_ratio'))
+    if 'validation_splitting_leave_n_out' in request.form:
+        experiment['splitting']['validation_splitting']['leave_n_out'] = int(request.form.get('validation_splitting_leave_n_out'))
+    if 'validation_splitting_folds' in request.form:
+        experiment['splitting']['validation_splitting']['folds'] = int(request.form.get('validation_splitting_folds'))
 
     experiment['dataset'] = request.files['file'].filename
     # così ho preso il nome del dataset passato dall'utente (caso strategia dataset)

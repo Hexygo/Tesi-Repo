@@ -10,7 +10,7 @@ BASE_URL='http://127.0.0.1:5000'
 
 @pytest.fixture
 def  start_container(): #fixture per avviare il container
-    with DockerContainer('tesi--backend').with_bind_ports(5000,5000) as container:
+    with DockerContainer('tesi-repo-backend').with_bind_ports(5000,5000) as container:
         return container
 
 def test_container_running(start_container): # Verifica che il container sia attivo, e quindi che non ci siano stati errori di build
@@ -25,41 +25,14 @@ def test_API_alive(start_container): # Verifica che gli endpoint siano attivi
 
 def setup_request_preprocess():# Funzione helper per produrre la richiesta
     form_data = {
-            'loading_strategy': 'dataset',
-            'random_seed': '42',
-            'binarize': 'false',
-            'global_threshold': 'false',
-            'user_average': 'true',
-            'user_k_core': 'false',
-            'item_k_core': 'false',
-            'iterative_k_core': 'false',
-            'n_rounds_k_core': 'false',
-            'cold_users': 'false',
-            'global_threshold_threshold': '0',
-            'user_k_core_core': '0',
-            'item_k_core_core': '0',
-            'iterative_k_core_core': '0',
-            'n_rounds_k_core_core': '0',
-            'n_rounds_k_core_rounds': '0',
-            'cold_users_threshold': '0',
-            'test_fixed_timestamp': 'false',
-            'test_temporal_hold_out': 'false',
-            'test_random_subsampling': 'true',
-            'test_random_cross_validation': 'false',
-            'test_fixed_timestamp_value': '',
-            'test_temporal_hold_out_test_ratio': '0',
-            'test_temporal_hold_out_leave_n_out': '0',
-            'test_random_subsampling_test_ratio': '0.2',
-            'test_random_cross_validation_folds': '0',
-            'validation_fixed_timestamp': 'false',
-            'validation_temporal_hold_out': 'false',
-            'validation_random_subsampling': 'false',
-            'validation_random_cross_validation': 'true',
-            'validation_fixed_timestamp_value': '',
-            'validation_temporal_hold_out_test_ratio': '0',
-            'validation_temporal_hold_out_leave_n_out': '0',
-            'validation_random_cross_validation_folds': '5',
-            'validation_random_subsampling_test_ratio': '0'
+        "loading_strategy": "dataset",
+        "binarize": False,
+        "random_seed": "42",
+        "prefiltering_strategies": "[{\"strategy\":\"user_average\"}]",
+        "test_splitting_strategy": "random_subsampling",
+        "test_splitting_ratio": "0.2",
+        "validation_splitting_strategy": "random_cross_validation",
+        "validation_splitting_folds": "5"
     }
     files =[('file',('sample_dataset',open(os.path.join(os.path.dirname(__file__),'data','sample_dataset.tsv'),'rb'),'application/octet-stream'))]
     headers = {

@@ -157,7 +157,7 @@ function Form(props) {
         if(requestState.n_rounds_k_core)
             prefilteringStrategies.push({strategy:'n_rounds_k_core', core:requestState.n_rounds_k_core_core, rounds:requestState.n_rounds_k_core_rounds})
         if(requestState.cold_users)
-            prefilteringStrategies.push({strategy:'cold_users', treshold:requestState.cold_users_threshold})
+            prefilteringStrategies.push({strategy:'cold_users', threshold:requestState.cold_users_threshold})
 
         request.prefiltering_strategies = JSON.stringify(prefilteringStrategies) // In questo modo eliminiamo la ridondanza nelle strategie di prefiltering, e semplifichiamo il lavoro al backend
 

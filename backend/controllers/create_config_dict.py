@@ -152,13 +152,12 @@ def set_strategy(experiment, request):
     experiment['data_config'] = dict()
     experiment['data_config']['strategy'] = request.form.get('loading_strategy') # Strategia impostata, ora si passa alla fase di configurazione specifica della strategia scelta.
 
-    match experiment['data_config']['strategy']:
-        case 'dataset':
-            dataset_config(experiment, request)
-        case 'fixed':
-            fixed_config(experiment, request)
-        case 'hierarchy':
-            hierarchy_config(experiment, request)
+    if experiment['data_config']['strategy'] == 'dataset':
+        dataset_config(experiment, request)
+    elif experiment['data_config']['strategy'] == 'fixed':
+        fixed_config(experiment, request)
+    else:
+        hierarchy_config(experiment, request)    
     
     return
 

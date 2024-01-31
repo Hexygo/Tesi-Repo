@@ -4,8 +4,8 @@
 # If you need more help, visit the Dockerfile reference guide at
 # https://docs.docker.com/go/dockerfile-reference/
 
-ARG PYTHON_VERSION=3.11.0
-FROM python:${PYTHON_VERSION}-slim as base
+ARG PYTHON_VERSION=3.8.18
+FROM python:${PYTHON_VERSION}-bookworm as base
 
 # Prevents Python from writing pyc files.
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -23,6 +23,10 @@ WORKDIR /app
 RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \
     python -m pip install -r requirements.txt
+
+# RUN --mount=type=cache,target=/root/.cache/pip \
+#     --mount=type=bind,source=requirements2.txt,target=requirements2.txt \
+#     python -m pip install -r requirements2.txt
 
 # Copy the source code into the container.
 COPY . .

@@ -83,6 +83,24 @@ def run_evaluation(config_dict, path):
     print(f"Training begun for {model_class.__name__}\\n")
     single = model_placeholder.single()
 
+    res_handler.save_best_results(output=base.base_namespace.path_output_rec_performance)
+    cutoff_k = getattr(base.base_namespace.evaluation, "cutoffs", [base.base_namespace.top_k])
+    cutoff_k = cutoff_k if isinstance(cutoff_k, list) else [cutoff_k]
+    first_metric = base.base_namespace.evaluation.simple_metrics[
+        0] if base.base_namespace.evaluation.simple_metrics else ""
+    res_handler.save_best_models(output=base.base_namespace.path_output_rec_performance, default_metric=first_metric,
+                                 default_k=cutoff_k)
+    if hasattr(base.base_namespace,
+               "print_results_as_triplets") and base.base_namespace.print_results_as_triplets == True:
+        res_handler.save_best_results_as_triplets(output=base.base_namespace.path_output_rec_performance)
+        hyper_handler.save_trials_as_triplets(output=base.base_namespace.path_output_rec_performance)
+    if hasattr(base.base_namespace.evaluation, "paired_ttest") and base.base_namespace.evaluation.paired_ttest:
+        res_handler.save_best_statistical_results(stat_test=StatTest.PairedTTest,
+                                                  output=base.base_namespace.path_output_rec_performance)
+    if hasattr(base.base_namespace.evaluation, "wilcoxon_test") and base.base_namespace.evaluation.wilcoxon_test:
+        res_handler.save_best_statistical_results(stat_test=StatTest.WilcoxonTest,
+                                                  output=base.base_namespace.path_output_rec_performance)
+
     return single['test_results']
 
 def run_recommendation(config_dict, path): #modifica tonì

@@ -150,7 +150,7 @@ class NameSpaceModel:
     def fill_base_evaluation(self):
         setattr(self.base_namespace, _config_test, False)
         setattr(self.base_namespace, _weights,  os.sep.join(["results", "{0}", "weights"]))
-        for p in [_data_config, _evaluation, _top_k, _log_folder, _logger_config]:
+        for p in [_data_config, _evaluation, _top_k, _log_folder, _logger_config, _performance]:
             if p == _data_config:
                 self.config[_experiment][p]["side_information"] = []
                 #self.config[_experiment][p][_dataloader] = self.config[_experiment][p].get(_dataloader, "DataSetLoader")

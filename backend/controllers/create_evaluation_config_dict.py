@@ -22,7 +22,7 @@ def create_evaluation_config_dict(request:Flask.request_class):
     config['experiment'] = dict()
     config['experiment']['path_log_folder']=log_path
 
-    output_path = base_path+'/performance'
+    output_path = 'results/'+name+'/performance'
     os.makedirs(output_path, exist_ok=False)
     config['experiment']['path_output_rec_performance'] = output_path
 

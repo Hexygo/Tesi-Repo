@@ -6,7 +6,7 @@ import {
     Box,
     ListItem, IconButton
 } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import '../../styles/evaluation/SimpleMetrics.css';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 
@@ -14,6 +14,7 @@ function SimpleMetrics(props) {
 
     const requestState = props.requestState;
     const setrequestState = props.setRequestState;
+    const [simpleMetrics, setSimpleMetrics] = useState(requestState?.simple_metrics || [])
 
     return (
 
@@ -39,11 +40,24 @@ function SimpleMetrics(props) {
                                                                                             control={<Checkbox/>}
                                                                                             label={metrics}
                                                                                             className='check_label'
-                                                                                            checked={requestState?.[metrics] || false}
-                                                                                            onChange={(event) => setrequestState({
-                                                                                                ...requestState,
-                                                                                                [metrics]: event.target.checked
-                                                                                            })}/>)
+                                                                                            checked={simpleMetrics.includes(metrics) || false}
+                                                                                            onChange={(event)=>{
+                                                                                                if(simpleMetrics.includes(metrics)){
+                                                                                                    console.log('c\'era, va rimosso')
+                                                                                                    setSimpleMetrics(simpleMetrics.filter(e=> e !== metrics))
+                                                                                                    setrequestState({
+                                                                                                        ...requestState,
+                                                                                                        simple_metrics:simpleMetrics.filter(e=> e !== metrics)
+                                                                                                    })
+                                                                                                }
+                                                                                                else{
+                                                                                                    setSimpleMetrics([...simpleMetrics, metrics])
+                                                                                                    setrequestState({
+                                                                                                        ...requestState,
+                                                                                                        simple_metrics:[...simpleMetrics, metrics]
+                                                                                                    })}
+                                                                                                console.log([...simpleMetrics, metrics])
+                                                                                            }}/>)
                             }
 
                         </Box>

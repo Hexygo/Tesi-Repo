@@ -8,7 +8,7 @@ export default function objectToFormData(obj, rootName, ignoreList) {
                 formData.append(root, data);
             } else if (Array.isArray(data)) {
                 for (var i = 0; i < data.length; i++) {
-                    appendFormData(data[i], root + '[' + i + ']');
+                    appendFormData(data[i], root + '[]');
                 }
             } else if (typeof data === 'object' && data) {
                 for (var key in data) {

@@ -109,10 +109,40 @@ function EvForm({evStep, previousevStep, setPreviousevStep, setEvStep}) {
         setRequestState(request)
 
     }
+
+    function cleanupComplexMetrics(request){
+        const complex_metrics = []
+        Metrics.filter(el=>el.id !== 'Fairness').forEach(el => {
+            el.complex_metrics.forEach(metric=>{
+                if (requestState[`${metric.id}`]){                        
+                    const metricToAdd ={id:metric.id}
+                    metric.parameters.forEach(parameter =>{
+                        metricToAdd[`${parameter}`] = requestState[`${parameter}_${metric.id}`]
+                    })
+                    complex_metrics.push(JSON.stringify(metricToAdd))
+                }
+            })
+        })
+        
+        Metrics.filter(el => el.id === 'Fairness').forEach(el=>{
+            el.complex_metrics.forEach(metric=>{
+                if (requestState.fairness[`${metric.id}`]){
+                    const metricToAdd ={id:metric.id}
+                    metric.parameters.forEach(parameter =>{
+                        metricToAdd[`${parameter}`] = requestState.fairness[`${parameter}_${metric.id}`]
+                    })
+                    complex_metrics.push(JSON.stringify(metricToAdd))
+                }
+            })
+        })
+        return {...request, complex_metrics:complex_metrics}
+    }
+
     const FormSubmit = (e) => {
         e.preventDefault()
         setLoading(true);
-        const formData = objectToFormData(requestState)
+        const request = cleanupComplexMetrics(requestState)
+        const formData = objectToFormData(request)
         fetch("http://127.0.0.1:5000/api/v1/evaluation", {
             method: 'POST',
             body: formData

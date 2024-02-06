@@ -76,7 +76,6 @@ def create_evaluation_config_dict(request:Flask.request_class):
             metric['clustering_file'] = path
 
         if metric['metric'] in ['REO','RSP']:
-            print('finisci') #TODO controlla il funzionamento
             path = base_path + '/'+metric['metric']+'.tsv'
             request.files.get('fairness.clustering_file_'+metric['metric']).save(path)
             metric['clustering_name'] = request.form.get('fairness.clustering_name_'+metric['metric'])

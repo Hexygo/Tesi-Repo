@@ -135,7 +135,17 @@ function EvForm({evStep, previousevStep, setPreviousevStep, setEvStep}) {
                 }
             })
         })
-        return {...request, complex_metrics:complex_metrics}
+        return {
+            top_k: request.top_k,
+            rev_tresh: request.rev_tresh,
+            t_test: request.t_test,
+            wilcoxon: request.wilcoxon,
+            simple_metrics: request.simple_metrics,
+            complex_metrics:complex_metrics,
+            test_dataset: request.test_dataset,
+            train_dataset: request.train_dataset,
+            recs_dataset: request.recs_dataset
+        }
     }
 
     const FormSubmit = (e) => {

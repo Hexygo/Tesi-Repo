@@ -39,7 +39,7 @@ class NameSpaceBuilder(Builder):
     @property
     def base(self) -> NameSpaceModel:
         namespace = self._namespace
-        namespace.fill_base()
+        namespace.fill_base_preprocessing()
         return namespace
     @property
     def base_evaluation(self) -> NameSpaceModel:

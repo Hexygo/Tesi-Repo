@@ -91,7 +91,7 @@ class NameSpaceModel:
         else:
             return raw_local_path
 
-    def fill_base(self):
+    def fill_base_preprocessing(self):
         self.config[_experiment][_dataloader] = self.config[_experiment].get(_dataloader, "DataSetLoader")
 
         setattr(self.base_namespace, _config_test, False)

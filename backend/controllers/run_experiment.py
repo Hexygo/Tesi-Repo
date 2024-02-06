@@ -8,8 +8,6 @@ __author__ = 'Vito Walter Anelli, Claudio Pomo'
 __email__ = 'vitowalter.anelli@poliba.it, claudio.pomo@poliba.it'
 
 import importlib
-import json
-import os
 from os import path
 
 import numpy as np
@@ -38,7 +36,7 @@ __/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\___/\\\\\\\\\\\\______/\\\\\\\\\\\\____________
 print(f'Version Number: {__version__}')
 
 
-def run_experiment(config_dict):
+def run_preprocessing(config_dict):
 
     builder = NameSpaceBuilder(config_dict, here, here) #modifica rispetto alla versione tradizionale di elliot
     base = builder.base

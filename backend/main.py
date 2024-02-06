@@ -4,7 +4,7 @@ from flask_cors import CORS
 from controllers.create_config_dict import create_config_dict
 from controllers.create_evaluation_config_dict import create_evaluation_config_dict
 from controllers.create_model_config_dict import create_model_config_dict
-from controllers.run_marco import run_experiment, run_evaluation, run_recommendation
+from backend.controllers.run_experiment import run_preprocessing, run_evaluation, run_recommendation
 import shutil
 import os
 
@@ -35,7 +35,7 @@ def preprocess():
         print("received a preprocessing request!")  # debug string
         print("trying to create a dataframe with pandas ")
         config = create_config_dict(request)  # creo dizionario di configurazione da cui creare un namespace
-        preprocessed_dataset = run_experiment(
+        preprocessed_dataset = run_preprocessing(
             config)  # grazie al dizionario costruirò un namespace che darò al run per ottenere il dataset preprocessato in cambio
         request_no = config['experiment']['splitting']['save_folder'].split('splitted_data/')[1]
         return render_template("results.html", config=config, PP=request_no)
@@ -49,7 +49,7 @@ def preprocess_json():
         print("received a preprocessing request!")
         print("trying to create a dataframe with pandas ")
         config = create_config_dict(request)  # creo dizionario di configurazione da cui creare un namespace
-        preprocessed_dataset = run_experiment(
+        preprocessed_dataset = run_preprocessing(
             config)  # grazie al dizionario costruirò un namespace che darò al run per ottenere il dataset preprocessato in cambio
         request_no = config['experiment']['splitting']['save_folder'].split('splitted_data/')[1]
         return jsonify(request_no)

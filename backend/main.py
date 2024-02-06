@@ -4,7 +4,7 @@ from flask_cors import CORS
 from controllers.create_config_dict import create_config_dict
 from controllers.create_evaluation_config_dict import create_evaluation_config_dict
 from controllers.create_model_config_dict import create_model_config_dict
-from backend.controllers.run_experiment import run_preprocessing, run_evaluation, run_recommendation
+from controllers.run_experiment import run_preprocessing, run_evaluation, run_recommendation
 import shutil
 import os
 

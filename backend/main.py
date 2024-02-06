@@ -1,11 +1,6 @@
-# This is a sample Python script.
+from flask import Flask, render_template, request, jsonify, send_file, json
 
-# Press Maiusc+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-from flask import Flask, render_template, request, jsonify, send_file, make_response, url_for, json
-
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 from controllers.create_config_dict import create_config_dict
 from controllers.create_evaluation_config_dict import create_evaluation_config_dict
 from controllers.create_model_config_dict import create_model_config_dict
@@ -161,5 +156,3 @@ def send_results_model(request_no):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

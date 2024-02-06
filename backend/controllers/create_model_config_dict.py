@@ -1,10 +1,10 @@
 import os
 import json
-import uuid  # se proprio dopo vogliamo farla con hash il nome del dataset
-from flask import Flask, request
+import uuid
+from flask import Flask
 import ast
 
-def create_model_config_dict(request):
+def create_model_config_dict(request:Flask.request_class):
     path = str(uuid.uuid4())
     base_path = 'data/' + path #da scrivere per indirizzare i file nel giusto path di base sono tutti dentro data
     os.makedirs(base_path, exist_ok=False)

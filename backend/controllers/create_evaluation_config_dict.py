@@ -1,11 +1,7 @@
 import os
 import json
-import shutil
-from datetime import datetime
-import hashlib
-import uuid  # se proprio dopo vogliamo farla con hash il nome del dataset
-from flask import Flask, request
-import zipfile  # per gestire lo zip inviato nella strategia hierarchy
+import uuid
+from flask import Flask
 
 def create_evaluation_config_dict(request:Flask.request_class):
     config = dict()

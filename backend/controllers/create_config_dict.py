@@ -1,13 +1,10 @@
 import os
-import shutil
-from datetime import datetime
-import hashlib
-import uuid  # se proprio dopo vogliamo farla con hash il nome del dataset
-from flask import Flask, request
-import zipfile  # per gestire lo zip inviato nella strategia hierarchy
+import uuid
+from flask import Flask
+import zipfile
 import json
 
-def dataset_config(experiment, request):
+def dataset_config(experiment, request:Flask.request_class):
     name = str(uuid.uuid4()) # genera un nome univoco per il salvataggio del file
     _path = 'data/' + name
     os.makedirs(_path, exist_ok=False)
@@ -104,7 +101,7 @@ def dataset_config(experiment, request):
     experiment['splitting']['save_on_disk'] = True
     experiment['splitting']['save_folder'] = save_folder
     
-def fixed_config(experiment, request):
+def fixed_config(experiment, request:Flask.request_class):
     name = str(uuid.uuid4()) # genera un nome univoco per il salvataggio del file
     _path = '../data/' + name
     os.makedirs(_path, exist_ok=False)
@@ -129,7 +126,7 @@ def fixed_config(experiment, request):
     experiment['splitting']['save_folder'] = save_folder
     return
 
-def hierarchy_config(experiment, request):
+def hierarchy_config(experiment, request:Flask.request_class):
     name = str(uuid.uuid4()) # genera un nome univoco per il salvataggio del file
     _path = '../data/' + name
     os.makedirs(_path, exist_ok=False)
@@ -148,7 +145,7 @@ def hierarchy_config(experiment, request):
     return
 
 
-def set_strategy(experiment, request):
+def set_strategy(experiment, request:Flask.request_class):
     experiment['data_config'] = dict()
     experiment['data_config']['strategy'] = request.form.get('loading_strategy') # Strategia impostata, ora si passa alla fase di configurazione specifica della strategia scelta.
 
@@ -161,7 +158,7 @@ def set_strategy(experiment, request):
     
     return
 
-def create_config_dict(request):
+def create_config_dict(request:Flask.request_class):
     config = dict()
     config['experiment'] = dict()
     set_strategy(config['experiment'], request)
